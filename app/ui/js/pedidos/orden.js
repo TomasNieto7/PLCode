@@ -25,10 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 
 
                 if (document.querySelector(".info-extra-contenido")) {
-                    console.log(i);
                     const interNotes = document.querySelectorAll(".info-extra-contenido")
-                    console.log(interNotes);
-                    const notas = interNotes[i].querySelector("#notas_adicionales").value;
+                    let notas = ''
+                    interNotes[i].querySelector("#notas_adicionales") && ( notas = interNotes[i].querySelector("#notas_adicionales").value)
                     const extras = interNotes[i].querySelectorAll(".extras:checked");
                     const extrasSeleccionados = Array.from(extras).map((extra) => {
                         return extra.nextSibling.textContent.trim().toLowerCase();
