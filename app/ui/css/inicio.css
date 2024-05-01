@@ -1,0 +1,60 @@
+body, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .barra-superior {
+    background-color: red;
+    height: 50px;
+}
+.texto-inicio {
+    float: right;
+    margin-right: 20px;
+}
+  .navbar {
+    background-color: purple;
+    color: white;
+    width: 200px;
+    height: 100vh;
+    float: left;
+  }
+  
+  .navbar img {
+   width:100%;
+   height:auto;  
+  }
+  
+  .navbar ul {
+   list-style-type:none;   
+  }
+  .navbar li {
+   padding:10px;   
+  }
+  .navbar a {
+   color:white;   
+   text-decoration:none;  
+  }
+  
+  .employee{
+   position:absolute;  
+   bottom:0;  
+   width:100%;  
+   padding:10px;   
+  }
+  
+  .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh; 
+    padding: 20px; 
+  }
+  .block{
+    width: calc(50% - 40px); 
+    height: calc(50vh - 40px);
+    margin: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    
+  }
+  

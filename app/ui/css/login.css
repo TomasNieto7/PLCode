@@ -1,0 +1,48 @@
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; 
+  }
+  
+  .login-section {
+      width: 400px; 
+      padding: 40px; 
+      background-color: white; 
+      border-radius:10px;
+  }
+  
+  label {
+      font-size:18px; 
+  }
+  input[type=text], input[type=password], input[type=submit], input[type=button] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type=button] {
+    background-color: #f20e0e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+  /* Agrega estilos adicionales según sea necesario */
+  
+  
+  
