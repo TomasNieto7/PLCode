@@ -3,26 +3,23 @@ const {
 } = require("electron")
 
 
-const loginForm = document.querySelector('.login')
-loginForm.addEventListener('submit', (e) => {
+const login = document.querySelector('.buttonI')
+login.addEventListener('click', (e) => {
     e.preventDefault()
-    /*
-        const userId = document.querySelector('#email').value
-    const password = document.querySelector('#password').value
 
-    const userData={
-        userId, password
-    }
-   ipcRenderer.send('client:ValidationLogin' ,userData)  
-    */
-   window.location.href = 'inicio.html'
+    //const userId = document.querySelector('#email').value
+    //ipcRenderer.send('client:ValidationLogin', userId)
+
+    window.location.href = 'inicio.html'
 })
 
-const register = document.querySelector('.buttonR')
+/*
+    const register = document.querySelector('.buttonR')
 register.addEventListener('click', (e) => {
     e.preventDefault()
     window.location.href = 'register.html'
 })
+*/
 
 
 ipcRenderer.on('server:ValidationLogin', (e, flag) => {
