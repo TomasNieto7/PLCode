@@ -9,18 +9,21 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
     const n_celda = document.createElement("td");
     n_celda.colSpan = 5;
     n_celda.innerHTML = `
-        <div class="info-extra-contenido">
-          <div class="izquierda">
-            <input type="checkbox" class="extras">Sin Salsa</label><br>
-            <input type="checkbox" class="extras">Sin Totopos</label><br>
-            <input type="checkbox" class="extras">Sin Tortillas</label>
-          </div>
-          <div class="derecha">
-            <strong>Notas adicionales:</strong>
-            <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
-          </div>
-        </div>
-      `;
+      <div class="info-extra-contenido">
+      <div class="izquierda">
+        <input type="checkbox" class="extras">Quesadilla</label><br>
+        <input type="checkbox" class="extras">Papas a la Francesa</label><br>
+        <input type="checkbox" class="extras">Ensalada de Col</label><br>
+        <input type="checkbox" class="extras">Frijoles Charros</label><br>
+        <input type="checkbox" class="extras">Ensalada de Coditos</label><br>
+        <input type="checkbox" class="extras">Arroz</label>
+      </div>
+      <div class="derecha">
+        <strong>Notas adicionales:</strong>
+        <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
+      </div>
+    </div>
+  `;
     infoExtraFila.appendChild(n_celda);
 
     const siguienteFila = document.getElementById(fila_id);
@@ -62,7 +65,7 @@ const actualizar_cantidad = (button, increment) => {
       cantidadValue = 0;
     }
     cantidadSpan.innerText = cantidadValue;
-    updateTotal();
+    updateTotalCombos();
   }
 };
 //Eventos agregar cantidad
@@ -87,33 +90,39 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const fila_id = button.parentNode.parentNode.id;
       mostrarInfoExtra(fila_id, button.className);
-      toggleEditButtonImage(button); // Cambia la imagen del botón
+      toggleEditButtonImage(button);
     });
   });
 });
 
-const updateTotal = () => {
-  // Para Pollo Loco
-  let polloLococantidad = parseInt(
-    document.getElementById("polloLococantidad").innerText
-  );
-  const precioPorPolloLoco = 128;
-  let polloLocoTotal = polloLococantidad * precioPorPolloLoco;
-  document.getElementById("polloLocoTotal").innerText = polloLocoTotal;
+const updateTotalCombos = () => {
+  // Combo idividual 1
+  let combo1Cantidad = parseInt(document.getElementById("combo1").innerText);
+  const precioCombo1 = 150;
+  let totalCombo1 = combo1Cantidad * precioCombo1;
+  document.getElementById("combo1Total").innerText = totalCombo1;
 
-  // Para Medio Pollo
-  let medioPollocantidad = parseInt(
-    document.getElementById("medioPollocantidad").innerText
-  );
-  const precioPorMedioPollo = 64;
-  let medioPolloTotal = medioPollocantidad * precioPorMedioPollo;
-  document.getElementById("medioPolloTotal").innerText = medioPolloTotal;
+  // Combo idividual 2
+  let combo2Cantidad = parseInt(document.getElementById("combo2").innerText);
+  const precioCombo2 = 200;
+  let totalCombo2 = combo2Cantidad * precioCombo2;
+  document.getElementById("combo2Total").innerText = totalCombo2;
 
-  // Para Cuarto Pollo
-  let cuartoPollocantidad = parseInt(
-    document.getElementById("cuartoPollocantidad").innerText
-  );
-  const precioPorCuartoPollo = 32;
-  let cuartoPolloTotal = cuartoPollocantidad * precioPorCuartoPollo;
-  document.getElementById("cuartoPolloTotal").innerText = cuartoPolloTotal;
+  // Combo familiar 1
+  let combo3Cantidad = parseInt(document.getElementById("combo3").innerText);
+  const precioCombo3 = 250;
+  let totalCombo3 = combo3Cantidad * precioCombo3;
+  document.getElementById("combo3Total").innerText = totalCombo3;
+
+  // Combo familiar 2
+  let combo4Cantidad = parseInt(document.getElementById("combo4").innerText);
+  const precioCombo4 = 300;
+  let totalCombo4 = combo4Cantidad * precioCombo4;
+  document.getElementById("combo4Total").innerText = totalCombo4;
+
+  // Combo familiar 3
+  let combo5Cantidad = parseInt(document.getElementById("combo5").innerText);
+  const precioCombo5 = 350;
+  let totalCombo5 = combo5Cantidad * precioCombo5;
+  document.getElementById("combo5Total").innerText = totalCombo5;
 };
