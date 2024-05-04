@@ -29,13 +29,13 @@ html {
 
 #logoPolloLogin {
   width: 288px;
-  height: 230px;
+  height: 250px;
   position: absolute;
   top: 1px;
 }
 
 .login-section {
-  width: 400px;
+  width: 350px;
   padding: 40px;
   background-color: #FFFBFB;
   border-radius: 10px;

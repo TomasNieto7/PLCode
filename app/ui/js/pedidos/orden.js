@@ -64,6 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cancelar.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "../../pedido.html";
+        window.location.href = "../../crearPedido.html";
     });
 });

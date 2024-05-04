@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.barra-superior {
+  background-color: red;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.barra-superior p {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#pageActually{
+  display: flex;
+  align-items: center;
+  width: 320px;
+  height: 47px;
+  font-size: 1.5rem;
+}
+
+#iconFlecha{
+  width: 47px;
+  height: 47px;
+}
+
+#endPedido{
+  width: 191px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3.5px solid white;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+#endPedido p{
+  margin: 0;
+  padding: 0;
+  width: 111px;
+  height: 28px;
+}
+
+#iconEnd{
+  width: 27px;
+  height: 27px;
+}
+
+main {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F8F8F8;
+}
+
+.module{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 78vh;
+}
+
+.nameComponent{
+  width: 306px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 20px;
+}
+
+.nameComponent p{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.detalles{
+  width: 947px;
+}
+
+table{
+  width: 100%;
+  border-spacing: 0;
+}
+
+thead{
+  background-color: #CB0000;
+  width: 100%;
+  height: 51px;
+  color: white;
+  font-size: 1.3rem;
+}
+
+th{
+  border-collapse: collapse;
+  margin: 0;
+}
+
+td{
+  text-align: center;
+  height: 47px;
+}
+
+#polloLocoRow{
+  background-color: #FDCEA2;
+}
+
+#medioPolloRow{
+  background-color: #FFE6C9;
+}
+
+#cuartoPolloRow{
+  background-color: #FDCEA2;
+}
+
+.cantidad{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.detalles button{
+  width: 15px;
+  height: 15px;
+}
+
+
+img {
+  width: 15px;
+  height: 15px;
+}
+
+.info-extra {
+  display: none;
+}
+
+.info-extra-contenido {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-extra-contenido .izquierda,
+.info-extra-contenido .derecha {
+  width: 45%;
+}
+
+.botones{
+  width: 460px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#agregar, #cancelar {
+  width: 214px;
+  height: 68px;
+}
