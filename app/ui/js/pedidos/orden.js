@@ -1,4 +1,6 @@
-const { ipcRenderer } = require("electron");
+const {
+  ipcRenderer
+} = require("electron");
 
 document.addEventListener("DOMContentLoaded", () => {
   const agregar = document.querySelector("#agregar");
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const detalles = document.querySelectorAll(".detalle");
 
     const ordenes = [];
-    let i = 0;
+    let i = 0
 
     detalles.forEach((div) => {
       const cantidad = div.querySelector(".cantidad span").innerText;
@@ -19,28 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const producto = div.querySelector(".producto").innerText;
         const descripcion = div.querySelector(".descripcion").innerText;
         const total = div.querySelector(".total").innerText;
-        let notasCompletas = "";
+        let notasCompletas = ''
+
 
         if (document.querySelector(".info-extra-contenido")) {
-          const interNotes = document.querySelectorAll(".info-extra-contenido");
-          let notas = "";
-          interNotes[i].querySelector("#notas_adicionales") &&
-            (notas = interNotes[i].querySelector("#notas_adicionales").value);
+          const interNotes = document.querySelectorAll(".info-extra-contenido")
+          let notas = ''
+          interNotes[i].querySelector("#notas_adicionales") && (notas = interNotes[i].querySelector("#notas_adicionales").value)
           const extras = interNotes[i].querySelectorAll(".extras:checked");
           const extrasSeleccionados = Array.from(extras).map((extra) => {
             return extra.nextSibling.textContent.trim().toLowerCase();
           });
-          notasCompletas = `${notas}${
-            extrasSeleccionados.length > 0
-              ? ", " + extrasSeleccionados.join(",")
-              : ""
-          }`;
+          notasCompletas = `${notas}${extrasSeleccionados.length > 0 ? ", " + extrasSeleccionados.join(",") : ""}`;
         }
-
-
-    cancelar.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "../../crearPedido.html";
 
         const newOrden = {
           producto,
@@ -49,10 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
           total,
           notasCompletas,
         };
-        i++;
+        i++
         console.log(i);
         ordenes.push(newOrden);
         flag = true;
+
       }
     });
 
@@ -62,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Enviando orden");
         console.log(orden);
       });
-      window.location.href = "../../pedido.html";
+      //window.location.href = "../../pedido.html";
     } else {
       alert("Debe agregar al menos un producto antes de continuar.");
     }
@@ -70,6 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cancelar.addEventListener("click", (e) => {
     e.preventDefault();
-    window.location.href = "../../pedido.html";
+    window.location.href = "../../crearPedido.html";
   });
 });
