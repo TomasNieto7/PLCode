@@ -1,60 +1,92 @@
-body, ul {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .barra-superior {
-    background-color: red;
-    height: 50px;
+*{
+  width: 100%;
+  height: 100%;
 }
-.texto-inicio {
-    float: right;
-    margin-right: 20px;
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
-  .navbar {
-    background-color: purple;
-    color: white;
-    width: 200px;
-    height: 100vh;
-    float: left;
-  }
-  
-  .navbar img {
-   width:100%;
-   height:auto;  
-  }
-  
-  .navbar ul {
-   list-style-type:none;   
-  }
-  .navbar li {
-   padding:10px;   
-  }
-  .navbar a {
-   color:white;   
-   text-decoration:none;  
-  }
-  
-  .employee{
-   position:absolute;  
-   bottom:0;  
-   width:100%;  
-   padding:10px;   
-  }
-  
-  .content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: 100vh; 
-    padding: 20px; 
-  }
-  .block{
-    width: calc(50% - 40px); 
-    height: calc(50vh - 40px);
-    margin: 20px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    
-  }
-  
+
+.barra-superior {
+  background-color: red;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.barra-superior p {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#pageActually{
+  display: flex;
+  justify-content: center;
+  width: 90px;
+  font-size: 1.5rem;
+}
+
+#logout{
+  width: 169px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3.5px solid white;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+#logout p{
+  margin: 0;
+  padding: 0;
+  width: 111px;
+  height: 28px;
+}
+
+#iconLogout{
+  width: 27px;
+  height: 27px;
+}
+
+main{
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8F8F8;
+}
+
+.container{
+  width: 892px;
+  height: 414px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left, .right{
+  width: 423px;
+  height: 414px;
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2{
+  width: 269px;
+  height: 186px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

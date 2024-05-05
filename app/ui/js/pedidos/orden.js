@@ -37,6 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
           }`;
         }
 
+
+    cancelar.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "../../crearPedido.html";
+
         const newOrden = {
           producto,
           descripcion,
