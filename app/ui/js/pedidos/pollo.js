@@ -1,14 +1,9 @@
 const mostrarInfoExtra = (fila_id, btn_class) => {
-  let infoExtraFila = document.querySelector(`#${fila_id} + .info-extra`);
-
-  if (infoExtraFila && infoExtraFila.style.display !== "none") {
-    infoExtraFila.style.display = "none";
-  } else {
-    infoExtraFila = document.createElement("tr");
-    infoExtraFila.classList.add("info-extra");
-    const n_celda = document.createElement("td");
-    n_celda.colSpan = 5;
-    n_celda.innerHTML = `
+  const n_fila = document.createElement("tr");
+  n_fila.classList.add("info-extra");
+  const n_celda = document.createElement("td");
+  n_celda.colSpan = 5;
+  n_celda.innerHTML = `
         <div class="info-extra-contenido">
           <div class="izquierda">
             <input type="checkbox" class="extras">Sin Salsa</label><br>
@@ -21,30 +16,17 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
           </div>
         </div>
       `;
-    infoExtraFila.appendChild(n_celda);
+  n_fila.appendChild(n_celda);
 
-    const siguienteFila = document.getElementById(fila_id);
-    siguienteFila.parentNode.insertBefore(
-      infoExtraFila,
-      siguienteFila.nextSibling
-    );
+  const siguienteFila = document.getElementById(fila_id);
+  siguienteFila.parentNode.insertBefore(n_fila, siguienteFila.nextSibling);
 
-    const editButton = document.querySelector(`#${fila_id} .${btn_class}`);
-    if (editButton) {
-      editButton.disabled = false;
-    }
-
-    infoExtraFila.style.display = "table-row";
+  const editButton = document.querySelector(`#${fila_id} .${btn_class}`);
+  if (editButton) {
+    editButton.disabled = true;
   }
-};
 
-const toggleEditButtonImage = (button) => {
-  const img = button.querySelector("img");
-  if (img.src.endsWith("down.png")) {
-    img.src = "../../../img/up.png";
-  } else {
-    img.src = "../../../img/down.png";
-  }
+  n_fila.style.display = "table-row";
 };
 
 const actualizar_cantidad = (button, increment) => {
@@ -87,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const fila_id = button.parentNode.parentNode.id;
       mostrarInfoExtra(fila_id, button.className);
-      toggleEditButtonImage(button); // Cambia la imagen del botón
     });
   });
 });
