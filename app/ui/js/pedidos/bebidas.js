@@ -9,18 +9,11 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
     const n_celda = document.createElement("td");
     n_celda.colSpan = 5;
     n_celda.innerHTML = `
-        <div class="info-extra-contenido">
-          <div class="izquierda">
-            <input type="checkbox" class="extras">Sin Salsa</label><br>
-            <input type="checkbox" class="extras">Sin Totopos</label><br>
-            <input type="checkbox" class="extras">Sin Tortillas</label>
-          </div>
-          <div class="derecha">
-            <strong>Notas adicionales:</strong>
-            <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
-          </div>
+        <div class="derecha">
+          <strong>Notas adicionales:</strong>
+          <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
         </div>
-      `;
+        `;
     infoExtraFila.appendChild(n_celda);
 
     const siguienteFila = document.getElementById(fila_id);
@@ -62,7 +55,7 @@ const actualizar_cantidad = (button, increment) => {
       cantidadValue = 0;
     }
     cantidadSpan.innerText = cantidadValue;
-    updateTotal();
+    updateTotalBebidas();
   }
 };
 //Eventos agregar cantidad
@@ -87,33 +80,49 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const fila_id = button.parentNode.parentNode.id;
       mostrarInfoExtra(fila_id, button.className);
-      toggleEditButtonImage(button); // Cambia la imagen del botón
+      toggleEditButtonImage(button);
     });
   });
 });
 
-const updateTotal = () => {
-  // Para Pollo Loco
-  let polloLococantidad = parseInt(
-    document.getElementById("polloLococantidad").innerText
+const updateTotalBebidas = () => {
+  // Para Agua
+  let AguaNCantidad = parseInt(
+    document.getElementById("aguaNCantidad").innerText
   );
-  const precioPorPolloLoco = 128;
-  let polloLocoTotal = polloLococantidad * precioPorPolloLoco;
-  document.getElementById("polloLocoTotal").innerText = polloLocoTotal;
+  const PreciaAguaN = 31;
+  let TotalAguaN = AguaNCantidad * PreciaAguaN;
+  document.getElementById("totalAguaN").innerText = TotalAguaN;
 
-  // Para Medio Pollo
-  let medioPollocantidad = parseInt(
-    document.getElementById("medioPollocantidad").innerText
+  // Para Coca Cola original
+  let cocaOCantidad = parseInt(
+    document.getElementById("cocaOCantidad").innerText
   );
-  const precioPorMedioPollo = 64;
-  let medioPolloTotal = medioPollocantidad * precioPorMedioPollo;
-  document.getElementById("medioPolloTotal").innerText = medioPolloTotal;
+  const precioCocaO = 41;
+  let cocaOTotal = cocaOCantidad * precioCocaO;
+  document.getElementById("cocaOTotal").innerText = cocaOTotal;
 
-  // Para Cuarto Pollo
-  let cuartoPollocantidad = parseInt(
-    document.getElementById("cuartoPollocantidad").innerText
+  // Para coca cola light
+  let cocaLCantidad = parseInt(
+    document.getElementById("cocaLCantidad").innerText
   );
-  const precioPorCuartoPollo = 32;
-  let cuartoPolloTotal = cuartoPollocantidad * precioPorCuartoPollo;
-  document.getElementById("cuartoPolloTotal").innerText = cuartoPolloTotal;
+  const precioCocaL = 41;
+  let cocaLTotal = cocaLCantidad * precioCocaL;
+  document.getElementById("cocaLTotal").innerText = cocaLTotal;
+
+  // Para Sprite
+  let spriteCantidad = parseInt(
+    document.getElementById("spriteCantidad").innerText
+  );
+  const precioSprite = 41;
+  let spriteTotal = spriteCantidad * precioSprite;
+  document.getElementById("spriteTotal").innerText = spriteTotal;
+
+  // Para aguaJ
+  let aguaJCantidad = parseInt(
+    document.getElementById("aguaJCantidad").innerText
+  );
+  const precioAguaJ = 41;
+  let aguaJTotal = aguaJCantidad * precioAguaJ;
+  document.getElementById("aguaJTotal").innerText = aguaJTotal;
 };

@@ -1,29 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de ventas</title>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Pollo Loco</title>
+    <link rel="stylesheet" href="../../css/tabla.css" />
+    <script defer src="../../js/pedidos/bebidas.js"></script>
     <script defer src="../../js/pedidos/orden.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
     <main>
-        <section class="modulo">
-            <div class="detalles">
-                <p id="producto">pollo medio</p>
-                <p id="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt minus architecto
-                    aspernatur illum! Velit architecto quo ipsa atque tenetur distinctio labore iste voluptates
-                    accusantium asperiores fuga, odit aliquid, quis porro!</p>
-                <input id="cantidad" type="text" placeholder="Cantidad">
-                <p id="total">125.00</p>
-                <input id="notas" type="text">
-            </div>
-            <button id="cancelar">Cancelar</button>
-            <button id="agregar">Agregar</button>
-        </section>
+      <section class="modulo">
+        <div class="detalles">
+          <table>
+            <tr>
+              <th>Producto</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Editar</th>
+            </tr>
+            <tr class="detalle" id="aguaN">
+              <td class="producto">Agua Natural 600 ml.</td>
+              <td class="descripcion">Agua con hielos</td>
+              <td class="cantidad" id="aguaNCantidad">
+                <button class="less">
+                  <img src="../../../img/minus.png" />
+                </button>
+                <span>0</span>
+                <button class="add"><img src="../../../img/add.png" /></button>
+              </td>
+              <td class="total" id="totalAguaN">0</td>
+              <td>
+                <button class="bntEdit">
+                  <img src="../../../img/down.png" />
+                </button>
+              </td>
+            </tr>
+            <tr class="detalle" id="CocaO">
+              <td class="producto">Coca Cola Original 600 ml.</td>
+              <td class="descripcion">Coca Cola con Hielos</td>
+              <td class="cantidad" id="cocaOCantidad">
+                <button class="less">
+                  <img src="../../../img/minus.png" />
+                </button>
+                <span>0</span>
+                <button class="add"><img src="../../../img/add.png" /></button>
+              </td>
+              <td class="total" id="cocaOTotal">0</td>
+              <td>
+                <button class="bntEdit">
+                  <img src="../../../img/down.png" />
+                </button>
+              </td>
+            </tr>
+            <tr class="detalle" id="CocaL">
+              <td class="producto">Coca Cola Ligth 600 ml.</td>
+              <td class="descripcion">Coca Cola con Hielos</td>
+              <td class="cantidad" id="cocaLCantidad">
+                <button class="less">
+                  <img src="../../../img/minus.png" />
+                </button>
+                <span>0</span>
+                <button class="add"><img src="../../../img/add.png" /></button>
+              </td>
+              <td class="total" id="cocaLTotal">0</td>
+              <td>
+                <button class="bntEdit">
+                  <img src="../../../img/down.png" />
+                </button>
+              </td>
+            </tr>
+            <tr class="detalle" id="Sprite">
+              <td class="producto">Sprite 600 ml.</td>
+              <td class="descripcion">Sprite con Hielos</td>
+              <td class="cantidad" id="spriteCantidad">
+                <button class="less">
+                  <img src="../../../img/minus.png" />
+                </button>
+                <span>0</span>
+                <button class="add"><img src="../../../img/add.png" /></button>
+              </td>
+              <td class="total" id="spriteTotal">0</td>
+              <td>
+                <button class="bntEdit">
+                  <img src="../../../img/down.png" />
+                </button>
+              </td>
+            </tr>
+            <tr class="detalle" id="AguaJ">
+              <td class="producto">Agua de Jamaica 600 ml</td>
+              <td class="descripcion">Agua con Hielos</td>
+              <td class="cantidad" id="aguaJCantidad">
+                <button class="less">
+                  <img src="../../../img/minus.png" />
+                </button>
+                <span>0</span>
+                <button class="add"><img src="../../../img/add.png" /></button>
+              </td>
+              <td class="total" id="aguaJTotal">0</td>
+              <td>
+                <button class="bntEdit">
+                  <img src="../../../img/down.png" />
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <button id="cancelar">Cancelar</button>
+        <button id="agregar">Agregar</button>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
