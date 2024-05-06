@@ -10,17 +10,12 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
     n_celda.colSpan = 5;
     n_celda.innerHTML = `
         <div class="info-extra-contenido">
-        <div class="izquierda">
-          <input type="checkbox" class="extras">Sin Salsa</label><br>
-          <input type="checkbox" class="extras">Sin Totopos</label><br>
-          <input type="checkbox" class="extras">Sin Tortillas</label>
-        </div>
         <div class="derecha">
           <strong>Notas adicionales:</strong>
           <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
+          </div>
         </div>
-      </div>
-    `;
+      `;
     infoExtraFila.appendChild(n_celda);
 
     const siguienteFila = document.getElementById(fila_id);
@@ -65,7 +60,7 @@ const actualizar_cantidad = (button, increment) => {
       cantidadValue = 0;
     }
     cantidadSpan.innerText = cantidadValue;
-    updateTotalCombos();
+    updateTotalComplemento();
   }
 };
 //Eventos agregar cantidad
@@ -95,28 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const updateTotal = () => {
-  // Para Pollo Loco
-  let polloLococantidad = parseInt(
-    document.getElementById("polloLococantidad").innerText
-  );
-  const precioPorPolloLoco = 128;
-  let polloLocoTotal = polloLococantidad * precioPorPolloLoco;
-  document.getElementById("polloLocoTotal").innerText = polloLocoTotal;
-
-  // Para Medio Pollo
-  let medioPollocantidad = parseInt(
-    document.getElementById("medioPollocantidad").innerText
-  );
-  const precioPorMedioPollo = 64;
-  let medioPolloTotal = medioPollocantidad * precioPorMedioPollo;
-  document.getElementById("medioPolloTotal").innerText = medioPolloTotal;
-
-  // Para Cuarto Pollo
-  let cuartoPollocantidad = parseInt(
-    document.getElementById("cuartoPollocantidad").innerText
-  );
-  const precioPorCuartoPollo = 32;
-  let cuartoPolloTotal = cuartoPollocantidad * precioPorCuartoPollo;
-  document.getElementById("cuartoPolloTotal").innerText = cuartoPolloTotal;
+//Precio de cada complemento
+const updateTotalComplemento = () => {
+  const cantidadCellsComp = document.querySelectorAll(".cantidad");
+  const totalCellsComp = document.querySelectorAll(".total");
+  const precioComplemento = 41;
+  let total = 0;
+  cantidadCellsComp.forEach((cantidadCell, index) => {
+    let cantidad = parseInt(cantidadCell.querySelector("span").innerText);
+    total += cantidad * precioComplemento;
+    totalCellsComp[index].innerText = cantidad * precioComplemento;
+  });
 };

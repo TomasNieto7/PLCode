@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de ventas</title>
-    <link rel="stylesheet" href="./css/inicio.css" />
-  </head>
-  <body>
-    <!-- <p>Hola este es el inicio</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de ventas</title>
+  <link rel="stylesheet" href="./css/inicio.css" />
+  <script defer src="./js/Inicio/Inicio.js"></script>
+</head>
+
+<body>
+  <!-- <p>Hola este es el inicio</p>
     <a href="login.html"><button>login</button></a>
     <a href="index.html">index</a> -->
-    <div id="barra-superior" class="barra-superior">
-      <span class="texto-inicio">Inicio</span>
+  <header id="barra-superior" class="barra-superior">
+    <p id="pageActually">Inicio</p>
+    <div id="logout">
+      <p>Cerrar Sesion</p>
+      <img id="iconLogout" src="../img/inicio/CerrarIcon.png" alt="">
     </div>
-    <div class="navbar">
-      <img src="../img/logo.ico" />
-      <ul>
-        <li>
-          <a href="#"><i class="icono-inicio"></i>Inicio</a>
-        </li>
-        <li>
-          <a href="./pedido.html"><i class="icono-pedido"></i>Crear pedido</a>
-        </li>
-        <li>
-          <a href="#"><i class="icono-ventas"></i>Ventas</a>
-        </li>
-        <li>
-          <a href="#"><i class="icono-productos"></i>Productos</a>
-        </li>
-        <li>
-          <a href="login.html"><i class="icono-login"></i>Login</a>
-        </li>
-      </ul>
-      <div class="employee">Empleado</div>
-    </div>
+  </header>
+  <main>
+    <section class="container">
+      <div class="left">
+        <h2>
+          CREAR PEDIDO
+        </h2>
+      </div>
+      <div class="right">
+        <h2>
+          VENTAS DIARIAS
+        </h2>
+      </div>
+    </section>
+  </main>
 
-    <div class="content">
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-      <div class="block"></div>
-    </div>
-  </body>
+</body>
+
 </html>

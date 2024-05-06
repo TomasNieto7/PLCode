@@ -26,7 +26,7 @@ const validation = () => {
 const validationLogin = () => {
     ipcMain.on('client:ValidationLogin', async (e, data) => {
         const Users = await User.find();
-        const existsUser = await Users.find(user => user.userId === data.userId && user.password === data.password)
+        const existsUser = await Users.find(user => user.userId === data)
         let flag 
         if (existsUser) {
             flag=true

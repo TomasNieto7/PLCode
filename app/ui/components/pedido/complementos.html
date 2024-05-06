@@ -1,29 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de ventas</title>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú de Pollo Loco</title>
+    <link rel="stylesheet" href="../../css/pedido/tabla.css" />
+    <script type="module" src="../../js/pedidos/complementos.js"></script>
     <script defer src="../../js/pedidos/orden.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
+    <header id="barra-superior" class="barra-superior">
+      <div id="pageActually">
+        <img id="iconFlecha" src="../../../img/menu/retroceso.png" alt="" />
+        <p>Crear Pedido</p>
+      </div>
+      <div id="endPedido">
+        <p>Finalizar Pedido</p>
+        <img id="iconEnd" src="../../../img/menu/iconFinalizar.png" alt="" />
+      </div>
+    </header>
     <main>
-        <section class="modulo">
-            <div class="detalles">
-                <p id="producto">pollo medio</p>
-                <p id="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt minus architecto
-                    aspernatur illum! Velit architecto quo ipsa atque tenetur distinctio labore iste voluptates
-                    accusantium asperiores fuga, odit aliquid, quis porro!</p>
-                <input id="cantidad" type="text" placeholder="Cantidad">
-                <p id="total">125.00</p>
-                <input id="notas" type="text">
-            </div>
-            <button id="cancelar">Cancelar</button>
-            <button id="agregar">Agregar</button>
-        </section>
+      <section class="module">
+        <div class="nameComponent">
+          <p>COMPLEMENTOS</p>
+        </div>
+        <div class="detalles">
+          <table>
+            <thead>
+              <tr id="columnDesc">
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="detalle" id="complemento1">
+                <td class="producto">Ensalada de Col</td>
+                <td class="descripcion">
+                  Ensalada de Col blanco, col morada y zanahoria rallada. Orden
+                  personal
+                </td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="complemento2">
+                <td class="producto">Quesadilla</td>
+                <td class="descripcion">
+                  Quesadilla en torilla de harina de 18cm.
+                </td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="complemento3">
+                <td class="producto">Ensalada de Codito</td>
+                <td class="descripcion">
+                  Ensalada con pasta de coditos, cebolla, mayonesa, crema,
+                  zanahoria, apio y jamon picado. Orden personal
+                </td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="complemento4">
+                <td class="producto">Papas a la Francesa</td>
+                <td class="descripcion">Papas a la Francesa. Orden personal</td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="complemento5">
+                <td class="producto">Frijoles Charros</td>
+                <td class="descripcion">
+                  Frijoles a la charra con tomate, tocino, cebolla, chile
+                  serrano y cilantro. Orden personal
+                </td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="complemento6">
+                <td class="producto">Arroz</td>
+                <td class="descripcion">
+                  Arroz con zanahoria y calabacita. Orden personal
+                </td>
+                <td class="cantidad">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="botones">
+        <button id="cancelar">
+          <div id="imgBtn">
+            <img src="../../../img/components/x.png" alt="" />
+          </div>
+          <div id="textBtn">
+            <p>Cancelar</p>
+          </div>
+        </button>
+        <button id="agregar">
+          <div id="imgBtn">
+            <img src="../../../img/components/carritoLogo.png" alt="" />
+          </div>
+          <div id="textBtn">
+            <p>Agregar</p>
+          </div>
+        </button>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>

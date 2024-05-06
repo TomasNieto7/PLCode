@@ -10,6 +10,18 @@ function generateCustomID() {
 
 console.log(generateCustomID()); // Ejemplo de ID generado: '7n805l8n'
 
+const backPage = document.querySelector('#pageActually')
+backPage.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href='./inicio.html'
+})
+
+const endPedido = document.querySelector('#endPedido')
+endPedido.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href = './carrito.html'
+})
+
 const pollo = document.querySelector('#pollo')
 pollo.addEventListener('click', (e) => {
     e.preventDefault()
