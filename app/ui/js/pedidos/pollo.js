@@ -1,33 +1,53 @@
-
 const mostrarInfoExtra = (fila_id, btn_class) => {
-  const n_fila = document.createElement("tr");
-  n_fila.classList.add("info-extra");
-  const n_celda = document.createElement("td");
-  n_celda.colSpan = 5;
-  n_celda.innerHTML = `
+  let infoExtraFila = document.querySelector(`#${fila_id} + .info-extra`);
+
+  if (infoExtraFila && infoExtraFila.style.display !== "none") {
+    infoExtraFila.style.display = "none";
+  } else {
+    infoExtraFila = document.createElement("tr");
+    infoExtraFila.classList.add("info-extra");
+    const n_celda = document.createElement("td");
+    n_celda.colSpan = 5;
+    n_celda.innerHTML = `
         <div class="info-extra-contenido">
-          <div class="izquierda">
-            <input type="checkbox" class="extras">Sin Salsa</label><br>
-            <input type="checkbox" class="extras">Sin Totopos</label><br>
-            <input type="checkbox" class="extras">Sin Tortillas</label>
-          </div>
-          <div class="derecha">
-            <strong>Notas adicionales:</strong>
-            <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
-          </div>
+        <div class="izquierda">
+          <input type="checkbox" class="extras">Sin Salsa</label><br>
+          <input type="checkbox" class="extras">Sin Totopos</label><br>
+          <input type="checkbox" class="extras">Sin Tortillas</label>
         </div>
-      `;
-  n_fila.appendChild(n_celda);
+        <div class="derecha">
+          <strong>Notas adicionales:</strong>
+          <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
+        </div>
+      </div>
+    `;
+    infoExtraFila.appendChild(n_celda);
 
-  const siguienteFila = document.getElementById(fila_id);
-  siguienteFila.parentNode.insertBefore(n_fila, siguienteFila.nextSibling);
+    const siguienteFila = document.getElementById(fila_id);
+    siguienteFila.parentNode.insertBefore(
+      infoExtraFila,
+      siguienteFila.nextSibling
+    );
 
-  const editButton = document.querySelector(`#${fila_id} .${btn_class}`);
-  if (editButton) {
-    editButton.disabled = true;
+    const editButton = document.querySelector(`#${fila_id} .${btn_class}`);
+    if (editButton) {
+      editButton.disabled = false;
+    }
+
+    infoExtraFila.style.display = "table-row";
   }
+};
 
-  n_fila.style.display = "table-row";
+const toggleEditButtonImage = (button) => {
+  const td = button.parentNode;
+  const img = td.querySelector("img");
+  if (img) {
+    if (img.src.endsWith("down.png")) {
+      img.src = "../../../img/up.png";
+    } else {
+      img.src = "../../../img/down.png";
+    }
+  }
 };
 
 const actualizar_cantidad = (button, increment) => {
@@ -45,7 +65,7 @@ const actualizar_cantidad = (button, increment) => {
       cantidadValue = 0;
     }
     cantidadSpan.innerText = cantidadValue;
-    updateTotal();
+    updateTotalCombos();
   }
 };
 //Eventos agregar cantidad
@@ -70,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const fila_id = button.parentNode.parentNode.id;
       mostrarInfoExtra(fila_id, button.className);
+      toggleEditButtonImage(button);
     });
   });
 });

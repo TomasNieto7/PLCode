@@ -42,11 +42,14 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
 };
 
 const toggleEditButtonImage = (button) => {
-  const img = button.querySelector("img");
-  if (img.src.endsWith("down.png")) {
-    img.src = "../../../img/up.png";
-  } else {
-    img.src = "../../../img/down.png";
+  const td = button.parentNode;
+  const img = td.querySelector("img");
+  if (img) {
+    if (img.src.endsWith("down.png")) {
+      img.src = "../../../img/up.png";
+    } else {
+      img.src = "../../../img/down.png";
+    }
   }
 };
 

@@ -129,16 +129,30 @@ td{
   height: 47px;
 }
 
-#polloLocoRow{
+#polloLocoRow, #aguaN, #comboIndv1, #complemento1, #burrito,#postre{
   background-color: #FDCEA2;
 }
 
-#medioPolloRow{
+
+
+#medioPolloRow, #cocaO, #comboIndv2, #complemento2{
   background-color: #FFE6C9;
 }
 
-#cuartoPolloRow{
+#cuartoPolloRow, #cocaL, #comboFam1, #complemento3{
   background-color: #FDCEA2;
+}
+
+#Sprite, #comboFam2, #complemento4{
+  background-color: #FFE6C9;
+}
+
+#AguaJ, #comboFam3, #complemento5{
+  background-color: #FDCEA2;
+}
+
+#complemento6{
+  background-color: #FFE6C9;
 }
 
 .cantidad{
