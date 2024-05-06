@@ -14,7 +14,7 @@ body {
 }
 
 .barra-superior {
-  background-image: url('../../../img/fondoheader.png'), linear-gradient(to right,#EC0715, #7A1F9D);
+  background-image: url('../../../img/fondoheader2.png');
   background-size: cover;
   height: 63px;
   display: flex;
@@ -82,6 +82,7 @@ main {
   flex-direction: column;
   align-items: center;
   height: 78vh;
+  padding-top: 65px;
 }
 
 .nameComponent{
@@ -129,30 +130,16 @@ td{
   height: 47px;
 }
 
-#polloLocoRow, #aguaN, #comboIndv1, #complemento1, #burrito,#postre{
+#polloLocoRow{
   background-color: #FDCEA2;
 }
 
-
-
-#medioPolloRow, #cocaO, #comboIndv2, #complemento2{
+#medioPolloRow{
   background-color: #FFE6C9;
 }
 
-#cuartoPolloRow, #cocaL, #comboFam1, #complemento3{
+#cuartoPolloRow{
   background-color: #FDCEA2;
-}
-
-#Sprite, #comboFam2, #complemento4{
-  background-color: #FFE6C9;
-}
-
-#AguaJ, #comboFam3, #complemento5{
-  background-color: #FDCEA2;
-}
-
-#complemento6{
-  background-color: #FFE6C9;
 }
 
 .cantidad{
