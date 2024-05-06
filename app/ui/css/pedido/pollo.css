@@ -165,11 +165,26 @@ img {
 .info-extra-contenido {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: #EEE1D2;
 }
 
-.info-extra-contenido .izquierda,
 .info-extra-contenido .derecha {
-  width: 45%;
+  width: 40.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.info-extra-contenido .izquierda{
+  width: 13.25rem;
+  text-align: start;
+}
+
+.extras{
+  border-radius: 50%;
 }
 
 .botones{
@@ -183,4 +198,40 @@ img {
 #agregar, #cancelar {
   width: 214px;
   height: 68px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.botones img {
+  width: 35px;
+  height: 35px;
+}
+
+#cancelar{
+  background-color: #E22A2A;
+}
+
+#agregar{
+  background-color: #169A3B;
+}
+
+#imgBtn{
+  width: 53px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#textBtn{
+  height: 30px;
+  width: 119px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,3 +1,4 @@
+
 const mostrarInfoExtra = (fila_id, btn_class) => {
   const n_fila = document.createElement("tr");
   n_fila.classList.add("info-extra");
