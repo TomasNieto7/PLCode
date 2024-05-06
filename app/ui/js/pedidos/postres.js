@@ -9,9 +9,11 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
     const n_celda = document.createElement("td");
     n_celda.colSpan = 5;
     n_celda.innerHTML = `
-      <div class="derecha">
-        <strong>Notas adicionales:</strong>
-        <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
+        <div class="info-extra-contenido">
+        <div class="derecha">
+          <strong>Notas adicionales:</strong>
+          <textarea  id="notas_adicionales" rows="4" cols="50" placeholder="Notas adicionales."></textarea>
+        </div>
       </div>
       `;
     infoExtraFila.appendChild(n_celda);
@@ -32,11 +34,14 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
 };
 
 const toggleEditButtonImage = (button) => {
-  const img = button.querySelector("img");
-  if (img.src.endsWith("down.png")) {
-    img.src = "../../../img/up.png";
-  } else {
-    img.src = "../../../img/down.png";
+  const td = button.parentNode;
+  const img = td.querySelector("img");
+  if (img) {
+    if (img.src.endsWith("down.png")) {
+      img.src = "../../../img/up.png";
+    } else {
+      img.src = "../../../img/down.png";
+    }
   }
 };
 

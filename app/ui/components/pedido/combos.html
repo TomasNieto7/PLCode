@@ -4,111 +4,132 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú de Pollo Loco</title>
-    <link rel="stylesheet" href="../../css/tabla.css" />
+    <link rel="stylesheet" href="../../css/pedido/tabla.css" />
     <script defer src="../../js/pedidos/combos.js"></script>
     <script defer src="../../js/pedidos/orden.js"></script>
   </head>
   <body>
+    <header id="barra-superior" class="barra-superior">
+      <div id="pageActually">
+        <img id="iconFlecha" src="../../../img/menu/retroceso.png" alt="" />
+        <p>Crear Pedido</p>
+      </div>
+      <div id="endPedido">
+        <p>Finalizar Pedido</p>
+        <img id="iconEnd" src="../../../img/menu/iconFinalizar.png" alt="" />
+      </div>
+    </header>
     <main>
-      <section class="modulo">
+      <section class="module">
+        <div class="nameComponent">
+          <p>COMBOS</p>
+        </div>
         <div class="detalles">
           <table>
-            <tr>
-              <th>Producto</th>
-              <th>Descripción</th>
-              <th>Cantidad</th>
-              <th>Total</th>
-              <th>Editar</th>
-            </tr>
-            <tr class="detalle" id="comboIndv1">
-              <td class="producto">Combo Individual 1</td>
-              <td class="descripcion">2 pz. de pollo Loco y 2 Complementos</td>
-              <td class="cantidad" id="combo1">
-                <button class="less">
-                  <img src="../../../img/minus.png" />
-                </button>
-                <span>0</span>
-                <button class="add"><img src="../../../img/add.png" /></button>
-              </td>
-              <td class="total" id="combo1Total">0</td>
-              <td>
-                <button class="bntEdit">
-                  <img src="../../../img/down.png" />
-                </button>
-              </td>
-            </tr>
-            <tr class="detalle" id="comboIndv2">
-              <td class="producto">Combo Individual 2</td>
-              <td class="descripcion">3pz. de Pollo Loco y 2 Complementos</td>
-              <td class="cantidad" id="combo2">
-                <button class="less">
-                  <img src="../../../img/minus.png" />
-                </button>
-                <span>0</span>
-                <button class="add"><img src="../../../img/add.png" /></button>
-              </td>
-              <td class="total" id="combo2Total">0</td>
-              <td>
-                <button class="bntEdit">
-                  <img src="../../../img/down.png" />
-                </button>
-              </td>
-            </tr>
-            <tr class="detalle" id="comboFam1">
-              <td class="producto">Combo Familiar 1</td>
-              <td class="descripcion">8 pz. de pollo Loco y 2 Complementos</td>
-              <td class="cantidad" id="combo3">
-                <button class="less">
-                  <img src="../../../img/minus.png" />
-                </button>
-                <span>0</span>
-                <button class="add"><img src="../../../img/add.png" /></button>
-              </td>
-              <td class="total" id="combo3Total">0</td>
-              <td>
-                <button class="bntEdit">
-                  <img src="../../../img/down.png" />
-                </button>
-              </td>
-            </tr>
-            <tr class="detalle" id="comboFam2">
-              <td class="producto">Combo Familiar 2</td>
-              <td class="descripcion">12 pz. de pollo Loco y 4 Complementos</td>
-              <td class="cantidad" id="combo4">
-                <button class="less">
-                  <img src="../../../img/minus.png" />
-                </button>
-                <span>0</span>
-                <button class="add"><img src="../../../img/add.png" /></button>
-              </td>
-              <td class="total" id="combo4Total">0</td>
-              <td>
-                <button class="bntEdit">
-                  <img src="../../../img/down.png" />
-                </button>
-              </td>
-            </tr>
-            <tr class="detalle" id="comboFam3">
-              <td class="producto">Combo Familiar 3</td>
-              <td class="descripcion">16 pz. de pollo Loco y 6 Complementos</td>
-              <td class="cantidad" id="combo5">
-                <button class="less">
-                  <img src="../../../img/minus.png" />
-                </button>
-                <span>0</span>
-                <button class="add"><img src="../../../img/add.png" /></button>
-              </td>
-              <td class="total" id="combo5Total">0</td>
-              <td>
-                <button class="bntEdit">
-                  <img src="../../../img/down.png" />
-                </button>
-              </td>
-            </tr>
+            <thead>
+              <tr id="columnDesc">
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Editar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="detalle" id="comboIndv1">
+                <td class="producto">Combo Individual 1</td>
+                <td class="descripcion">
+                  2 pz. de pollo Loco y 2 Complementos
+                </td>
+                <td class="cantidad" id="combo1">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total" id="combo1Total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="comboIndv2">
+                <td class="producto">Combo Individual 2</td>
+                <td class="descripcion">3pz. de Pollo Loco y 2 Complementos</td>
+                <td class="cantidad" id="combo2">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total" id="combo2Total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="comboFam1">
+                <td class="producto">Combo Familiar 1</td>
+                <td class="descripcion">
+                  8 pz. de pollo Loco y 2 Complementos
+                </td>
+                <td class="cantidad" id="combo3">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total" id="combo3Total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="comboFam2">
+                <td class="producto">Combo Familiar 2</td>
+                <td class="descripcion">
+                  12 pz. de pollo Loco y 4 Complementos
+                </td>
+                <td class="cantidad" id="combo4">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total" id="combo4Total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+              <tr class="detalle" id="comboFam3">
+                <td class="producto">Combo Familiar 3</td>
+                <td class="descripcion">
+                  16 pz. de pollo Loco y 6 Complementos
+                </td>
+                <td class="cantidad" id="combo5">
+                  <img class="less" src="../../../img/minus.png" />
+                  <span>0</span>
+                  <img class="add" src="../../../img/add.png" />
+                </td>
+                <td class="total" id="combo5Total">0</td>
+                <td>
+                  <img class="bntEdit" src="../../../img/down.png" />
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
-        <button id="cancelar">Cancelar</button>
-        <button id="agregar">Agregar</button>
+      </section>
+      <section class="botones">
+        <button id="cancelar">
+          <div id="imgBtn">
+            <img src="../../../img/components/x.png" alt="" />
+          </div>
+          <div id="textBtn">
+            <p>Cancelar</p>
+          </div>
+        </button>
+        <button id="agregar">
+          <div id="imgBtn">
+            <img src="../../../img/components/carritoLogo.png" alt="" />
+          </div>
+          <div id="textBtn">
+            <p>Agregar</p>
+          </div>
+        </button>
       </section>
     </main>
   </body>
