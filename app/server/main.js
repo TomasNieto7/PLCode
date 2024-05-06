@@ -13,7 +13,7 @@ function createWindow() {
     },
     show: false, 
     autoHideMenuBar: true,
-    fullscreen: true,
+    //fullscreen: true,
   });
 
   win.loadFile("app/ui/login.html");

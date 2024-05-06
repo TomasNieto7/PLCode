@@ -65,7 +65,7 @@ const actualizar_cantidad = (button, increment) => {
       cantidadValue = 0;
     }
     cantidadSpan.innerText = cantidadValue;
-    updateTotalCombos();
+    updateTotal();
   }
 };
 //Eventos agregar cantidad
