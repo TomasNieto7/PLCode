@@ -1,4 +1,3 @@
-
 const mostrarInfoExtra = (fila_id, btn_class) => {
   const n_fila = document.createElement("tr");
   n_fila.classList.add("info-extra");
@@ -7,9 +6,24 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
   n_celda.innerHTML = `
         <div class="info-extra-contenido">
           <div class="izquierda">
-            <input type="checkbox" class="extras">Sin Salsa</label><br>
-            <input type="checkbox" class="extras">Sin Totopos</label><br>
-            <input type="checkbox" class="extras">Sin Tortillas</label>
+            <div class='options'>
+              <input type="checkbox" class="extras" id='uno'>
+              <label for='uno'>
+                Sin Salsa
+              </label>
+            </div>
+            <div class='options'>
+              <input type="checkbox" class="extras" id='dos'>
+              <label for="dos">
+                <span class="radio-button-1"></span>Sin Totopos
+              </label>
+            </div>
+            <div class='options'>
+              <input type="checkbox" class="extras" id='tres'>
+              <label for="tres">
+                <span class="radio-button-1"></span>Sin Tortillas
+              </label>
+            </div>
           </div>
           <div class="derecha">
             <strong>Notas adicionales:</strong>
