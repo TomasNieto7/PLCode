@@ -41,7 +41,7 @@ const cancel = document.getElementById("cancelar");
 cancel.addEventListener("click", (e) => {
   e.preventDefault();
   ipcRenderer.send("client:reloadOrden");
-  window.location.href = "./pedido.html";
+  window.location.href = "./crearPedido.html";
 });
 
 const total = document.getElementById("total");

@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de ventas</title>
-    <script defer src="./js/login.js"></script>
-    <link rel="stylesheet" href="../ui/css/login.css" />
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="image-section">
-        <img src="../img/pl.jpeg" alt="" />
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de ventas</title>
+  <script defer src="./js/login.js"></script>
+  <link rel="stylesheet" href="../ui/css/login.css" />
+</head>
 
+<body>
+  <main class="container">
+    <div class="loginDiv">
+      <img src="../img/LogoPollo.png" id="logoPolloLogin" alt="">
       <div class="login-section">
-        <h2>LOGIN</h2>
+        <h2>INICIAR SESIÓN</h2>
         <form class="login">
-          <label for="username">Clave</label><br />
-          <input
-            id="email"
-            type="text"
-            placeholder="email"
-            
-            autofocus
-          /><br /><br />
-
-          <label for="password">Contraseña</label><br />
-          <input
-            id="password"
-            type="password"
-            placeholder="password"
-            
-          /><br /><br />
-
-          <div class="botones">
-            <input type="button" class="buttonR" value="Registrar" />
-            <input type="submit" class="buttonI" value="Iniciar sesion" />
-            <a href="./register.html">registro?</a>
+          <div id="label">
+            Clave
           </div>
+          <input id="email" type="text" placeholder="ID" autofocus />
         </form>
+        <div class="botones">
+          <input type="submit" class="buttonI" value="INGRESAR" />
+        </div>
       </div>
     </div>
-  </body>
+  </main>
+</body>
+
 </html>

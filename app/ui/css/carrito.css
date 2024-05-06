@@ -4,7 +4,7 @@ body, ul {
     box-sizing: border-box;
   }
   .barra-superior {
-    background-color: #ff0000; 
+    background: linear-gradient(to right,#EC0715, #7A1F9D);
     height: 50px;
     
   }
