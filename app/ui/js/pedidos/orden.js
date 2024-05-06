@@ -2,6 +2,18 @@ const {
   ipcRenderer
 } = require("electron");
 
+const backPage = document.querySelector('#pageActually')
+backPage.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href='../../crearPedido.html'
+})
+
+const endPedido = document.querySelector('#endPedido')
+endPedido.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href = '../../carrito.html'
+})
+
 document.addEventListener("DOMContentLoaded", () => {
   const agregar = document.querySelector("#agregar");
   const cancelar = document.querySelector("#cancelar");
@@ -56,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Enviando orden");
         console.log(orden);
       });
-      //window.location.href = "../../pedido.html";
+      window.location.href = "../../crearPedido.html";
     } else {
       alert("Debe agregar al menos un producto antes de continuar.");
     }

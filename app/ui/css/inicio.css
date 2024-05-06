@@ -11,7 +11,8 @@ body {
 }
 
 .barra-superior {
-  background-color: red;
+  background-image: url('../../img/fondoheader2.png');
+  background-size: cover;
   height: 63px;
   display: flex;
   align-items: center;
