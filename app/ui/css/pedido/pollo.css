@@ -5,24 +5,21 @@
 }
 
 
-html, body {
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  font-family: Arial, sans-serif;
 }
 
 .barra-superior {
-  background-image: url('../../../img/fondoheader.png'), linear-gradient(to right,#EC0715, #7A1F9D);
+  background-image: url('../../../img/fondoheader2.png');
   background-size: cover;
   height: 63px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
 }
 
 .barra-superior p {
@@ -72,11 +69,11 @@ html, body {
 }
 
 main {
-  flex: 1;
+  width: 100%;
+  height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background-color: #F8F8F8;
 }
 
@@ -84,6 +81,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 78vh;
   padding-top: 65px;
 }
 
@@ -132,30 +130,16 @@ td{
   height: 47px;
 }
 
-#polloLocoRow, #aguaN, #comboIndv1, #complemento1, #burrito,#postre{
+#polloLocoRow{
   background-color: #FDCEA2;
 }
 
-
-
-#medioPolloRow, #cocaO, #comboIndv2, #complemento2{
+#medioPolloRow{
   background-color: #FFE6C9;
 }
 
-#cuartoPolloRow, #cocaL, #comboFam1, #complemento3{
+#cuartoPolloRow{
   background-color: #FDCEA2;
-}
-
-#Sprite, #comboFam2, #complemento4{
-  background-color: #FFE6C9;
-}
-
-#AguaJ, #comboFam3, #complemento5{
-  background-color: #FDCEA2;
-}
-
-#complemento6{
-  background-color: #FFE6C9;
 }
 
 .cantidad{
@@ -197,30 +181,14 @@ img {
 
 .info-extra-contenido .izquierda{
   width: 13.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.options{
-  width: 10rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-left: 10px;
+  text-align: start;
 }
 
 .extras{
-  margin: 0;
-  margin-right: 10px;
-  padding-bottom: 5px;
+  border-radius: 50%;
 }
 
 .botones{
-  margin-top: 68px;
-  margin-bottom: 30px;
   width: 460px;
   height: 68px;
   display: flex;
