@@ -36,9 +36,10 @@ html, body {
 #pageActually{
   display: flex;
   align-items: center;
-  width: 320px;
+  width: 220px;
   height: 47px;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 #iconFlecha{
@@ -56,6 +57,7 @@ html, body {
   border-radius: 10px;
   font-size: .86rem;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 #endPedido p{
@@ -238,6 +240,7 @@ img {
   justify-content: center;
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .botones img {
@@ -267,4 +270,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.bntEdit
+{
+  cursor: pointer;
+}
+.less, .add
+{
+  cursor: pointer;
 }
