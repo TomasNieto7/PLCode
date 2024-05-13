@@ -1,0 +1,72 @@
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Estilos para el ticket */
+.ticket {
+    width: 195px; /* Ancho del ticket */
+    padding: 10px;
+    border: 1px solid #000;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.orden{
+    width: 100%;
+}
+
+.headers{
+    display: flex;
+    font-size: 6px;
+    justify-content: start;
+}
+
+.bodyTable{
+    display: flex;
+    font-size: 6px;
+    justify-content: start;
+}
+
+.f1{
+    display: flex;
+    align-items: center;
+    width: 20mm;
+}
+
+.f2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20mm;
+}
+
+.f3{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 20mm;
+}
+
+#detalles{
+    margin-top: 0.5mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+#detalles p{
+    margin: 0;
+    padding: 0;
+}
+
+#logoTicket{
+    width: 200px;
+    height: 200px;
+}
