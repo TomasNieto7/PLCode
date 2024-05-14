@@ -1,4 +1,10 @@
-const { ipcRenderer } = require("electron");
+const {
+  ipcRenderer
+} = require("electron");
+const {
+  jsPDF
+} = require("jspdf"); // will automatically load the node version
+const autoTable =  require('jspdf-autotable')
 
 const pedido = document.querySelector(".pedido");
 
@@ -54,3 +60,9 @@ const getTotal = (ordenes) => {
   });
   total.innerHTML = `El total es: ${precio}`;
 };
+
+const realizar = document.getElementById("realizar");
+realizar.addEventListener("click", (e) => {
+  e.preventDefault()
+  window.location.href = "./components/carrito/ticket.html";
+});
