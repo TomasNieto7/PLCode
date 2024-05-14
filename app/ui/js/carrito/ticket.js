@@ -38,7 +38,7 @@ const renderOrdenes = (ordenes) => {
                         ${orden.cantidad}
                     </p>
                     <p class="f3">
-                        ${orden.total}.00
+                        $ ${orden.total}.00
                     </p>
                 </div>
               `;
@@ -59,14 +59,14 @@ window.onload = function () {
     cmd.addEventListener('click', e => {
         html2canvas(tableContent).then(canvas => {
 
-            let heightTIcket = 60+heightEnMilimetros 
+            let heightTIcket = 100; 
             const pdf = new jsPDF({
                 unit: 'mm',
-                format: [58, heightTIcket],
+                format: [width, height],
             });
             
             // Agrega el contenido del canvas al PDF
-            pdf.addImage(canvas.toDataURL('image/jpeg'), 'JPEG', 0, 15, 58, height);
+            pdf.addImage(canvas.toDataURL('image/jpeg'), 'JPEG', 0, 0, width, height);
             
             // Guarda el PDF
             pdf.save('ticket.pdf');
