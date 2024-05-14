@@ -11,12 +11,12 @@ const mostrarInfoExtra = (fila_id, btn_class) => {
     n_celda.innerHTML = `
       <div class="info-extra-contenido">
       <div class="izquierda">
-        <input type="checkbox" class="extras">Quesadilla</label><br>
-        <input type="checkbox" class="extras">Papas a la Francesa</label><br>
-        <input type="checkbox" class="extras">Ensalada de Col</label><br>
-        <input type="checkbox" class="extras">Frijoles Charros</label><br>
-        <input type="checkbox" class="extras">Ensalada de Coditos</label><br>
-        <input type="checkbox" class="extras">Arroz</label>
+        <label><input type="checkbox" class="extras">Quesadilla</label><br>
+        <label><input type="checkbox" class="extras">Papas a la Francesa</label><br>
+        <label><input type="checkbox" class="extras">Ensalada de Col</label><br>
+        <label><input type="checkbox" class="extras">Frijoles Charros</label><br>
+        <label><input type="checkbox" class="extras">Ensalada de Coditos</label><br>
+        <label><input type="checkbox" class="extras">Arroz</label>
       </div>
       <div class="derecha">
         <strong>Notas adicionales:</strong>
