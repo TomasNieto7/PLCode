@@ -17,21 +17,27 @@ const renderTasks = (ordenes) => {
   ordenes.forEach((orden) => {
     pedido.innerHTML += `
           <div class="card">
-            <h4>
-              Producto: ${orden.producto}
-            </h4>
-            <p>
-              Descripción: ${orden.descripcion} <!-- Cambié "Description" a "Descripción" -->
-            </p>
-            <p>
-              Cantidad: ${orden.cantidad}
-            </p>
-            <p>
-              Precio: ${orden.total}
-            </p>
-            <p>
-              Notas: ${orden.notasCompletas}
-            </p>
+            <div class=cantidad>
+              <p>
+                ${orden.cantidad}
+              </p>
+            </div>
+            <div class=producto>
+              <h4>
+                ${orden.producto}
+              </h4>
+              <p>
+                ${orden.descripcion} <!-- Cambié "Description" a "Descripción" -->
+              </p>
+              <p>
+                Notas: ${orden.notasCompletas}
+              </p>
+            </div>
+            <div class=total>
+              <p>
+                $ ${orden.total}
+              </p>
+            </div>
           </div>
         `;
   });
@@ -42,6 +48,11 @@ ipcRenderer.on("server:getOrdenes", (e, args) => {
   renderTasks(ordenes);
   getTotal(ordenes);
 });
+const backPage = document.querySelector('#pageActually')
+backPage.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href='./crearPedido.html'
+})
 
 const cancel = document.getElementById("cancelar");
 cancel.addEventListener("click", (e) => {
@@ -58,7 +69,7 @@ const getTotal = (ordenes) => {
   ordenes.forEach((orden) => {
     precio += parseFloat(orden.total);
   });
-  total.innerHTML = `El total es: ${precio}`;
+  total.innerHTML = `$${precio}`;
 };
 
 const realizar = document.getElementById("realizar");
