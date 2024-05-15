@@ -13,4 +13,10 @@ logout.addEventListener('click', e=>{
     window.location.href = 'login.html'
 })
 
+const ventas = document.querySelector('.right')
+ventas.addEventListener('click', e=>{
+    e.preventDefault
+    window.location.href = 'ventasDiarias.html'
+})
+
 //Falta rediccion a ventas diarias
