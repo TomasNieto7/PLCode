@@ -3,7 +3,7 @@ const {
 } = require("electron");
 const {
   jsPDF
-} = require("jspdf"); // will automatically load the node version
+} = require("jspdf"); 
 const autoTable =  require('jspdf-autotable')
 
 const pedido = document.querySelector(".pedido");
@@ -21,7 +21,7 @@ const renderTasks = (ordenes) => {
               Producto: ${orden.producto}
             </h4>
             <p>
-              Descripción: ${orden.descripcion} <!-- Cambié "Description" a "Descripción" -->
+              Descripción: ${orden.descripcion} 
             </p>
             <p>
               Cantidad: ${orden.cantidad}
@@ -64,5 +64,28 @@ const getTotal = (ordenes) => {
 const realizar = document.getElementById("realizar");
 realizar.addEventListener("click", (e) => {
   e.preventDefault()
+
+  const notas = [];
+
+  let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0);
+  let idVenta = Math.floor(Math.random() * 1000000);
+  let fecha = new Date();
+
+  let newNota = {
+    idVenta: idVenta,
+    precioTotal: precioTotal,    
+    fecha: fecha,
+    contenidoOrden: ordenes 
+  };
+  notas.push(newNota);
+
+  notas.forEach((nota) => {
+    ipcRenderer.send("client:newNota", nota);
+  });
+
+  console.log(newNota);
+
   window.location.href = "./components/carrito/ticket.html";
 });
+
+ 
