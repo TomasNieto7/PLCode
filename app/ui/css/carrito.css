@@ -28,6 +28,7 @@ body, html {
     height: 63px;
     display: flex;
     align-items: center;
+
   }
   
   .barra-superior p {
@@ -96,13 +97,49 @@ body, html {
    display: flex;
    align-items: center;
    justify-content: space-between;
+   gap: 150px;
   }
 
   .totalFinal h4 {
     padding-left: 30  0px;
   }
 
+  .botones{
+    margin-top: 68px;
+    margin-bottom: 30px;
+    width: 460px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   
+  #realizar, #cancelar {
+    width: 214px;
+    height: 68px;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+    
+.botones img {
+  width: 35px;
+  height: 35px;
+}
+
+#cancelar{
+  background-color: #E22A2A;
+}
+
+#realizar{
+  background-color: #169A3B;
+}
+
   #pollo {
     background-image: url(' ');
   }
