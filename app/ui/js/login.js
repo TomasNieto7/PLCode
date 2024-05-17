@@ -15,7 +15,7 @@ login.addEventListener('click', (e) => {
         modal.showModal()
         console.log(2);
     }
-    //window.location.href = 'inicio.html'
+    window.location.href = 'inicio.html'
 })
 
 /*
