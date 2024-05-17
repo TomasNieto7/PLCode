@@ -3,15 +3,9 @@ const {
 } = require("electron");
 
 const backPage = document.querySelector('#pageActually')
-backPage.addEventListener('click', e=>{
-    e.preventDefault
-    window.location.href='../../crearPedido.html'
-})
-
-const endPedido = document.querySelector('#endPedido')
-endPedido.addEventListener('click', e=>{
-    e.preventDefault
-    window.location.href = '../../carrito.html'
+backPage.addEventListener('click', e => {
+  e.preventDefault
+  window.location.href = '../../crearPedido.html'
 })
 
 document.addEventListener("DOMContentLoaded", () => {
