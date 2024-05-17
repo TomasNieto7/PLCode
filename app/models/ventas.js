@@ -28,9 +28,6 @@ const {
     detalles: {
       type: String,
       required: true,
-    },
-    notas: {
-      type: String,
     }
   }, {
     timestamps: true,

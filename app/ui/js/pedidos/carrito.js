@@ -3,8 +3,8 @@ const {
 } = require("electron");
 const {
   jsPDF
-} = require("jspdf"); 
-const autoTable =  require('jspdf-autotable')
+} = require("jspdf");
+const autoTable = require('jspdf-autotable')
 
 const pedido = document.querySelector(".pedido");
 
@@ -50,9 +50,9 @@ ipcRenderer.on("server:getOrdenes", (e, args) => {
 });
 
 const backPage = document.querySelector('#pageActually')
-backPage.addEventListener('click', e=>{
-    e.preventDefault
-    window.location.href='./crearPedido.html'
+backPage.addEventListener('click', e => {
+  e.preventDefault
+  window.location.href = './crearPedido.html'
 })
 
 const cancel = document.getElementById("cancelar");
@@ -79,25 +79,25 @@ realizar.addEventListener("click", (e) => {
 
   const notas = [];
 
-  let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0);
-  let idVenta = Math.floor(Math.random() * 1000000);
+  let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
   let fecha = new Date();
+  fecha = fecha.toString()
+  let atendio = 'juan'
+  let metodoPago = 'efectivo'
+  const detalles = JSON.stringify(ordenes)
 
   let newNota = {
-    idVenta: idVenta,
-    precioTotal: precioTotal,    
+    monto: precioTotal,
+    metodoPago: metodoPago,
     fecha: fecha,
-    contenidoOrden: ordenes 
+    atendio:atendio,
+    detalles: detalles
   };
-  notas.push(newNota);
 
-  notas.forEach((nota) => {
-    ipcRenderer.send("client:newNota", nota);
-  });
+  ipcRenderer.send("client:newVenta", newNota);
+
 
   console.log(newNota);
 
   window.location.href = "./components/carrito/ticket.html";
 });
-
- 
