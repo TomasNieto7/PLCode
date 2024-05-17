@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de ventas</title>
-    <link rel="stylesheet" href="./css/carrito.css" />
-    <script defer src="./js/pedidos/carrito.js"></script>
-  </head>
-  <body>
-    <div id="barra-superior" class="barra-superior">
-      <span class="texto-inicio">Inicio</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de ventas</title>
+  <link rel="stylesheet" href="./css/carrito.css" />
+  <script defer src="./js/pedidos/carrito.js"></script>
+</head>
+
+<body>
+
+  <header id="barra-superior" class="barra-superior">
+    <div id="pageActually">
+      <img id="iconFlecha" src="../img/menu/retroceso.png" alt="">
+
+      <p>Carrito</p>
+
+    </div>
+
+  </header>
+  <main>
+    <div class="Titulo">
+      <h2>Resumen del pedido</h2>
     </div>
     <div class="content">
-        <div class="pedido">
-        </div>
+      <div class="pedido">
+      </div>
+      <div class="totalFinal">
+        <p>TOTAL: </p> <br>
         <h4 id="total"></h4>
-        <div class="options">
-            <button id="cancelar">Cancelar</button>
-            <button id="realizar">Realizar pedido</button>
-        </div>
+      </div>
+
     </div>
-  </body>
+    <div class="botones">
+      <button id="cancelar">Cancelar</button>
+      <button id="realizar">Realizar pedido</button>
+    </div>
+  </main>
+</body>
+
 </html>
