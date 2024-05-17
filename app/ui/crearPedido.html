@@ -7,6 +7,7 @@
   <title>Sistema de Ventas - El Pollo Loco</title>
   <link rel="stylesheet" href="./css/pedido.css" />
   <script defer src="./js/pedido.js"></script>
+  <link rel="stylesheet" href="./css/modal.css">
 </head>
 
 <body>
@@ -53,7 +54,13 @@
       </div>
     </section>
   </main>
-
+  <dialog id="abrir" class="modal1">
+    <div class="containerModal">
+      <button class="cerrar">X</button>
+      <h2>AVISO</h2>
+      <p>NO HAY ELEMENTOS PARA GENERAR EL PEDIDO</p>
+    </div>
+  </dialog>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ login.addEventListener('click', (e) => {
         modal.showModal()
         console.log(2);
     }
-    window.location.href = 'inicio.html'
+    else window.location.href = 'inicio.html'
 })
 
 /*
@@ -37,11 +37,23 @@ const botonadmon = document.getElementById("botonadmon")
 
 botonadmon.addEventListener("click", e => {
     e.preventDefault()
-    const password = botonadmon.value
+    const password = document.getElementById("contraeña").value
     if (password==="a") {
         modalError.classList.add("alertStyle");
         modalError.showModal()
     }
+})
+
+const limpiarPassoword = () => {
+    document.getElementById("contraeña").value = ''
+}
+
+const cerrare = document.querySelector('.cerrare')
+
+cerrare.addEventListener('click', e => {
+    modalError.classList.remove("alertStyle");
+    modalError.close()
+    limpiarPassoword()
 })
 
 ipcRenderer.on('server:ValidationLogin', (e, flag) => {
