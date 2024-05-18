@@ -10,31 +10,19 @@ ipcRenderer.on("server:getVentas", (e, args) => {
   renderizarNotas(notas);
 });
 
-const backPage = document.querySelector('#pageActually')
+const backPage = document.querySelector('#pageActually');
 backPage.addEventListener('click', e => {
-  e.preventDefault
+  e.preventDefault();
   window.location.href = "./inicio.html";
 });
 
-const toggleEditButtonImage = (button) => {
-  const img = button.querySelector("img");
-  if (img) {
-    if (img.src.endsWith("down.png")) {
-      img.src = "../img/up.png";
-    } else {
-      img.src = "../img/down.png";
-    }
-  }
-};
-
-
 const esPar = (numero) => {
   if (numero % 2 === 0) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
-}
+};
 
 const renderizarNotas = (notas) => {
   const tbody = document.querySelector('tbody');
@@ -42,10 +30,11 @@ const renderizarNotas = (notas) => {
 
   let totalMonto = 0;
 
+  
   notas.forEach((nota, index) => {
-    montoDouble = parseFloat(nota.monto)
+    montoDouble = parseFloat(nota.monto);
     totalMonto += parseFloat(nota.monto);
-    flagID = esPar(index)
+    flagID = esPar(index);
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -55,12 +44,14 @@ const renderizarNotas = (notas) => {
       <td>${nota.metodoPago}</td>
       <td>${nota.fecha}</td>
       <td>${nota.atendio}</td>
-      <td> <img class="bntEdit" src="../img/down.png" /> </td>
+      <td> <img class="btnEdit" src="../img/down.png" /> </td>
     `;
     if (flagID) {
       tr.id = `one`;
-    } else tr.id = `two`;
-    tr.className = `fila_${index}`
+    } else {
+      tr.id = `two`;
+    }
+    tr.className = `fila_${index}`;
     tbody.appendChild(tr);
   });
 
@@ -75,12 +66,11 @@ const renderizarNotas = (notas) => {
   `;
   tbody.appendChild(trTotal);
 
-  const editButtons = document.querySelectorAll(".bntEdit");
-  editButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const fila_id = button.closest('tr').className;
-      mostrarInfoExtra(fila_id, "bntEdit");
-      toggleEditButtonImage(button);
+  const botonesEditar = document.querySelectorAll(".btnEdit");
+  botonesEditar.forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+      const botonClickeado = e.target;
+      mostrarOcultarInformacionAdicional(botonClickeado, notas);
     });
   });
-}
+};

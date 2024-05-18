@@ -146,6 +146,9 @@ img {
     width: 15px;
     height: 15px;
 }
+.info-extra {
+  display: none;
+}
 
 .info-extra-contenido {
   display: flex;
@@ -153,24 +156,3 @@ img {
   align-items: center;
   background-color: #EEE1D2;
 }
-
-/* .info-extra-contenido .derecha {
-  width: 40.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 10px 10px 10px 10px;
-}
-
-.info-extra-contenido .izquierda{
-  width: 13.25rem;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  padding-left: 55px;
-  justify-content: flex-start;
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-} */
