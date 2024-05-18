@@ -5,9 +5,9 @@ const {
 const Venta = require("../models/ventas")
 
 const getVentas = () => {
-    ipcMain.on("client-getVentas", async (e, arg) => {
+    ipcMain.on("client:getVentas", async (e, arg) => {
         const ventas = await Venta.find();
-        e.reply("server-getVentas", JSON.stringify(ventas));
+        e.reply("server:getVentas", JSON.stringify(ventas));
     })
 }
 
