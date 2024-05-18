@@ -152,7 +152,29 @@ img {
 
 .info-extra-contenido {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
+  align-items: start;
   background-color: #EEE1D2;
+}
+
+.detallesVenta{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 65rem;
+}
+
+.conteinerVenta{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#cantidad,
+#producto,
+#desc,
+#notes {
+  text-align: left;
+  width: 40rem;
 }
