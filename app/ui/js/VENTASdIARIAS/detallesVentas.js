@@ -21,9 +21,10 @@ const mostrarOcultarInformacionAdicional = (boton, notas) => {
   toggleEditButtonImage(boton); 
 };
 
-const mostrarInfoExtra = (fila_id, btn_class, detalles) => {
+const mostrarInfoExtra = (fila_id, btn_class, detallesA) => {
   let infoExtraFila = document.querySelector(`#${fila_id} + .info-extra`);
-
+  console.log(JSON.parse(detallesA));
+  const detalles = JSON.parse(detallesA)
   if (infoExtraFila && infoExtraFila.style.display !== "none") {
     infoExtraFila.style.display = "none";
   } else {
@@ -34,15 +35,26 @@ const mostrarInfoExtra = (fila_id, btn_class, detalles) => {
     
     let detallesHTML = "";
     if (Array.isArray(detalles)) {
-      detallesHTML = detalles.map(detalle => `<p>${detalle}</p>`).join('');
+      detallesHTML = detalles.map(detalle => `
+
+      <div class='conteinerVenta'>
+      <p id='cantidad'>Cantidad: ${detalle.cantidad}</p>
+      <p id='producto'>Producto: ${detalle.producto}</p>
+      <p id='desc'>Descripcion: ${detalle.descripcion}</p>
+      <p id='notes'>Notas: ${detalle.notasCompletas}</p>
+      </div>
+      
+      `).join('');
     } else {
       detallesHTML = `<p>${detalles}</p>`;
     }
     
     n_celda.innerHTML = `
       <div class="info-extra-contenido">
-        <p>Información adicional de la venta: </p>  
+        <p>Detalles de la venta: </p>  
+        <div class='detallesVenta'>
         ${detallesHTML}
+        </div>
       </div>
     `;
     infoExtraFila.appendChild(n_celda);
