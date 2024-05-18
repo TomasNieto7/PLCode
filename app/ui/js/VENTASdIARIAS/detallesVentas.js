@@ -38,11 +38,11 @@ const mostrarInfoExtra = (fila_id, btn_class, detallesA) => {
       detallesHTML = detalles.map(detalle => `
 
       <div class='conteinerVenta'>
-      <p id='cantidad'>Cantidad: ${detalle.cantidad}</p>
-      <p id='producto'>Producto: ${detalle.producto}</p>
-      <p id='desc'>Descripcion: ${detalle.descripcion}</p>
-      <p id='notes'>Notas: ${detalle.notasCompletas}</p>
-      </div>
+      <p id='cantidad'><b>Cantidad:</b> ${detalle.cantidad}</p>
+      <p id='producto'><b>Producto:</b>${detalle.producto}</p>
+      <p id='desc'><b>Descripcion:</b> ${detalle.descripcion}</p>
+      <p id='notes'><b>Notas:</b> ${detalle.notasCompletas}</p>
+      </div> 
       
       `).join('');
     } else {
@@ -51,7 +51,7 @@ const mostrarInfoExtra = (fila_id, btn_class, detallesA) => {
     
     n_celda.innerHTML = `
       <div class="info-extra-contenido">
-        <p>Detalles de la venta: </p>  
+        <p><b>Detalles de la venta:</b> </p>  
         <div class='detallesVenta'>
         ${detallesHTML}
         </div>

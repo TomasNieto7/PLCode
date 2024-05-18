@@ -153,7 +153,7 @@ img {
 .info-extra-contenido {
   display: flex;
   justify-content: space-around;
-  align-items: start;
+  align-items: center;
   background-color: #EEE1D2;
 }
 
@@ -169,12 +169,21 @@ img {
   display: flex;
   align-items: center;
   width: 100%;
+  gap: 20px;
+  text-align: left;
 }
 
-#cantidad,
-#producto,
-#desc,
+#cantidad{
+  width: 10rem;
+}
+#producto{
+  width: 25rem;
+}
+#desc{
+  width: 30rem;
+
+}
 #notes {
-  text-align: left;
-  width: 40rem;
+  
+  width: 30rem;
 }
