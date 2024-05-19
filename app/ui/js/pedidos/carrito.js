@@ -7,6 +7,8 @@ const {
 const autoTable = require('jspdf-autotable')
 
 const pedido = document.querySelector(".pedido");
+const modal = document.querySelector('#modal')
+const btnCloseModal = document.querySelector('#cerraradmon')
 
 let ordenes = [];
 
@@ -79,15 +81,10 @@ const selectElement = document.getElementById("metodo");
 selectElement.addEventListener("change", function() {
     const selectedOption = selectElement.options[selectElement.selectedIndex];
     metodoPago = selectedOption.text;
-    console.log(metodoPago);
+   
 });
 
-
-const realizar = document.getElementById("realizar");
-realizar.addEventListener("click", (e) => {
-  e.preventDefault()
-
-  const notas = [];
+const generarNotaVenta = () => { const notas = [];
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
   let fechaActual = new Date();
@@ -114,6 +111,70 @@ realizar.addEventListener("click", (e) => {
 
 
   console.log(newNota);
+}
+btnCloseModal.addEventListener('click', e => {
+  modal.classList.remove("alertStyle");
+  modal.close()
+})
 
-  //window.location.href = "./components/carrito/ticket.html";
+const realizar = document.getElementById("realizar");
+realizar.addEventListener("click", (e) => {
+  e.preventDefault();
+  generarNotaVenta();
+  
+  if (metodoPago === 'EFECTIVO') {
+    modal.classList.add("alertStyle");
+    modal.showModal(actualizarModal());
+  } else if (metodoPago === 'DEBITO/CREDITO') {
+    window.location.href = "./components/carrito/ticket.html";
+  }
 });
+
+
+const actualizarModal = () => {
+  const info = document.querySelector('#informacion');
+    info.innerHTML = `
+      <p>Total a pagar: ${total.innerHTML}</p>
+      <p>Ingrese el monto con el que va a pagar</p>
+      <input type="number" id="pagoEfectivo" placeholder="Monto a pagar">
+      <p>Cambio: <span id="cambio">0.00</span></p>
+      <button id="confirmar">Confirmar pedido</button>`;
+
+    if (pagoEfectivo) {
+      pagoEfectivo.addEventListener('input', actualizarCambio);
+    }
+};
+
+const actualizarCambio = () => {
+  const totalPago = parseFloat(total.innerHTML.replace('$', '')); 
+  const efectivo = parseFloat(pagoEfectivo.value || 0); 
+  const cambio = efectivo - totalPago; 
+  document.getElementById('cambio').textContent = cambio.toFixed(2);
+};
+
+
+//Mostrar en pantalla el cambio
+// const genResumen = () => {
+//   const resumen = document.getElementById('resumen');
+//   const valorSelect = document.getElementById('metodo');
+//   const infoSelec = valorSelect.value;
+
+//   if (infoSelec === 'EFECTIVO') {
+//     resumen.innerHTML = `
+//       <p>Ingrese el monto con el que va a pagar</p>
+//       <input type="number" id="pagoEfectivo" placeholder="Monto a pagar">
+//       <p>Cambio: <span id="cambio">0.00</span></p>`;
+
+//     if (pagoEfectivo) {
+//       pagoEfectivo.addEventListener('input', actualizarCambio);
+//     }
+
+//   } else if (infoSelec === 'DEBITO') {
+//     resumen.innerHTML = ` `;
+//   }
+// };
+
+// genResumen();
+
+
+// selectElement.addEventListener("change", genResumen);
