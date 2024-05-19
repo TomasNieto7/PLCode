@@ -35,7 +35,7 @@ const renderTasks = (ordenes) => {
             </div>
             <div class=total>
               <p>
-                $ ${orden.total}
+                $ ${parseFloat(orden.total).toFixed(2)}
               </p>
             </div>
           </div>
@@ -70,7 +70,7 @@ const getTotal = (ordenes) => {
   ordenes.forEach((orden) => {
     precio += parseFloat(orden.total);
   });
-  total.innerHTML = `El total es: ${precio}`;
+  total.innerHTML = `$${precio.toFixed(2)}`;
 };
 
 const realizar = document.getElementById("realizar");
