@@ -3,8 +3,10 @@ const {
 } = require("electron")
 
 const modal = document.querySelector('#modal')
-const modalError = document.querySelector('.modalerror')
 const login = document.querySelector('.buttonI')
+const passwordInput = document.getElementById("contraeña"); 
+const errorLabel = document.getElementById("errorLabel");
+
 login.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -13,9 +15,9 @@ login.addEventListener('click', (e) => {
     if (userId === "admin") {
         modal.classList.add("alertStyle");
         modal.showModal()
-        console.log(2);
+        // console.log(2);
     }
-    //window.location.href = 'inicio.html'
+    else window.location.href = 'crearPedido.html'
 })
 
 /*
@@ -31,18 +33,27 @@ const btnCloseModal = document.querySelector('#cerraradmon')
 btnCloseModal.addEventListener('click', e => {
     modal.classList.remove("alertStyle");
     modal.close()
+    limpiarPassoword();
 })
 
 const botonadmon = document.getElementById("botonadmon")
 
 botonadmon.addEventListener("click", e => {
-    e.preventDefault()
-    const password = botonadmon.value
-    if (password==="a") {
-        modalError.classList.add("alertStyle");
-        modalError.showModal()
+    e.preventDefault();
+    const password = passwordInput.value;
+    if (password !== "admin") {
+        passwordInput.classList.add("error"); 
+        errorLabel.innerText = "Contraseña incorrecta"; 
+    } else {
+        window.location.href = 'inicio.html';
     }
-})
+});
+const limpiarPassoword = () => {
+    passwordInput.value = '';
+    passwordInput.classList.remove("error");
+    errorLabel.innerText = ""; 
+}
+
 
 ipcRenderer.on('server:ValidationLogin', (e, flag) => {
     if (flag) {

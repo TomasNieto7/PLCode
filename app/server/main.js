@@ -1,8 +1,10 @@
 const { BrowserWindow, ipcMain } = require("electron")
 const path = require("path"); // Asegúrate de importar el módulo 'path'
 const {getUsers, newUser, validation, validationLogin} = require("./users.js")
-const {getVentas, newVenta} = require("./pedidos.js")
-const {getOrdenes, newOrden, reloadOrdenes} = require('./ordenes.js')
+const {getVentas, newVenta} = require("./ventasDiarias.js")
+const {getOrdenes, newOrden, reloadOrdenes} = require('./ordenes.js');
+const { get } = require("jquery");
+const { getNotas, newNota } = require("./notas.js");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -31,5 +33,8 @@ newVenta()
 getOrdenes()
 newOrden() 
 reloadOrdenes()
+
+getNotas()
+newNota()
 
 module.exports = { createWindow };

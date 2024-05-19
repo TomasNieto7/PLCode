@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú de Pollo Loco</title>
     <link rel="stylesheet" href="../../css/pedido/tabla.css" />
+    <link rel="stylesheet" href="../../css/modal.css">
     <script defer src="../../js/pedidos/bebidas.js"></script>
     <script defer src="../../js/pedidos/orden.js"></script>
   </head>
@@ -14,10 +15,6 @@
       <div id="pageActually">
         <img id="iconFlecha" src="../../../img/menu/retroceso.png" alt="" />
         <p>Crear Pedido</p>
-      </div>
-      <div id="endPedido">
-        <p>Finalizar Pedido</p>
-        <img id="iconEnd" src="../../../img/menu/iconFinalizar.png" alt="" />
       </div>
     </header>
     <main>
@@ -124,5 +121,12 @@
         </button>
       </section>
     </main>
+    <dialog id="modal" class="modaladmon">
+      <div>
+        <button class="cerraradmon" id="cerraradmon">X</button>
+        <h2>AVISO</h2>
+        <p>NO HAY ELEMEMTOS PARA AGREGAR AL PEDIDO</p>
+      </div>
+    </dialog>
   </body>
 </html>

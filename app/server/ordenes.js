@@ -5,7 +5,7 @@ const {
 let ordenes = []
 
 const getOrdenes = () => {
-    ipcMain.on("client:getOrdenes", async (e, arg) => {
+    ipcMain.on("client:getOrdenes", (e, arg) => {
         e.reply("server:getOrdenes", JSON.stringify(ordenes));
     })
 }

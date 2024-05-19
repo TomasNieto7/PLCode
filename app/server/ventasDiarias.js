@@ -5,14 +5,14 @@ const {
 const Venta = require("../models/ventas")
 
 const getVentas = () => {
-    ipcMain.on("client-getVentas", async (e, arg) => {
-        const Users = await User.find();
-        e.reply("server-getVentas", JSON.stringify(Users));
+    ipcMain.on("client:getVentas", async (e, arg) => {
+        const ventas = await Venta.find();
+        e.reply("server:getVentas", JSON.stringify(ventas));
     })
 }
 
 const generateCustomID = () => {
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
     let id = '';
     for (let i = 0; i < 8; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
@@ -45,9 +45,9 @@ const newVenta = () => {
     ipcMain.on('client:newVenta', async (e, arg) => {
         const ventaData = await getVentaID(arg)
         console.log(ventaData);
-        const newVenta = new User(ventaData)
+        const newVenta = new Venta(ventaData)
         const ventaSaved = await newVenta.save();
-        e.reply("new-user-created", JSON.stringify(ventaSaved))
+        e.reply("server:newVenta", JSON.stringify(ventaSaved))
     })
 }
 

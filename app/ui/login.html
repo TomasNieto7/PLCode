@@ -7,6 +7,7 @@
   <title>Sistema de ventas</title>
   <script defer src="./js/login.js"></script>
   <link rel="stylesheet" href="../ui/css/login.css" />
+  <link rel="stylesheet" href="../ui/css/modal.css">
 </head>
 
 <body>
@@ -30,18 +31,19 @@
   </main>
   <dialog id="modal" class="modaladmon">
     <div>
-      <button class="cerraradmon" id="cerraradmon">X</button>
-      <h2>AVISO</h2>
-      <p>ESTAS INGRESANDO COMO ADMINISTRADOR</p>
-      <P>INGRESA LA CONTRASEÑA PARA INGRESAR</P>
-      <input id="contraeña" type="textad" placeholder="Contraseña" autofocus />
-      </form>
-      <div class="botonadmon">
-        <input id="botonadmon" type="submit" class="buttonad" value="INGRESAR" />
-      </div>
+        <button class="cerraradmon" id="cerraradmon">X</button>
+        <h2>AVISO</h2>
+        <p>ESTAS INGRESANDO COMO ADMINISTRADOR</p>
+        <P>INGRESA LA CONTRASEÑA PARA INGRESAR</P>
+        <input id="contraeña" type="textad" placeholder="Contraseña" autofocus />
+        <div id="errorLabel" class="error-label"></div> 
+        <div class="botonadmon">
+            <input id="botonadmon" type="submit" class="buttonad" value="INGRESAR" />
+        </div>
     </div>
-  </dialog>
+</dialog>
 
+<!-- 
   <dialog id="abrirerror" class="modalerror">
     <div>
         <button class="cerrare">X</button>
@@ -49,7 +51,7 @@
         <h2>INCORRECTA</h2>
         <p>INTENTE NUEVAMENTE</p>
     </div>
-  </dialog>
+  </dialog> -->
 </body>
 
 </html>
