@@ -11,6 +11,34 @@ const {
 
 const ticket = document.querySelector(".orden");
 
+let notas = [];
+
+ipcRenderer.send("client:getVentasActual");
+ipcRenderer.on("server:getVentasActual", (e, args) => {
+  notas = JSON.parse(args);
+  renderVentaID(notas)
+});
+
+const renderVentaID = (venta) => {
+    const ventaId = venta.ventaId
+    const numOrden = document.querySelector(".numOrden");
+    numOrden.innerHTML = `Orden #${ventaId}`
+}
+
+ipcRenderer.send('client:getLocal')
+
+ipcRenderer.on("server:getLocal", (e, args) => {
+    const local = JSON.parse(args);
+    renderLocal(local)
+});
+
+const renderLocal = (local) => {
+    const localName = document.querySelector("#localName");
+    const address = document.querySelector("#address");
+    localName.innerHTML = `${local.local}`
+    address.innerHTML = `${local.address}`
+}
+
 let ordenes = [];
 
 ipcRenderer.send("client:getOrdenes");

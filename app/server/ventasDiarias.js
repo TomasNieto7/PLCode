@@ -11,10 +11,18 @@ const getVentas = () => {
     })
 }
 
+const getVentasActual = () => {
+    ipcMain.on("client:getVentasActual", async (e, arg) => {
+        const ventas = await Venta.find();
+        const VentaA = await ventas[ventas.length - 1]
+        e.reply("server:getVentasActual", JSON.stringify(VentaA));
+    })
+}
+
 const generateCustomID = () => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
     let id = '';
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 6; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         id += characters.charAt(randomIndex);
     }
@@ -54,5 +62,6 @@ const newVenta = () => {
 
 module.exports = {
     getVentas,
-    newVenta
+    newVenta,
+    getVentasActual
 }
