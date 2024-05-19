@@ -2,6 +2,7 @@ const {
     ipcRenderer
 } = require("electron");
 
+
 // Importa las bibliotecas
 const html2canvas = require('html2canvas')
 const {
@@ -45,6 +46,27 @@ const renderOrdenes = (ordenes) => {
     });
 }
 
+const $hora=document.querySelector('.hora'),
+$fecha= document.querySelector('.fecha');
+
+function Reloj() {
+    let f=new Date(),
+    day = f.getDate(),
+    month= f.getMonth()+1,
+    year= f.getFullYear();
+    weekDay=f.getDay();
+
+    day=('0'+day).slice(-2);
+    mes=('0'+month).slice(-2);
+
+    let timeString=f.toLocaleTimeString();
+    $hora.innerHTML=`Hora: `+ timeString;
+
+    $fecha.innerHTML= `FECHA: ${day}-${month}-${year}`;
+}
+setInterval(() =>{
+    Reloj()
+},1000);
 
 // Espera a que la página se cargue completamente
 window.onload = function () {
