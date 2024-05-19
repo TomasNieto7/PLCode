@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
   font-family: "Poppins";
 }
+
 main {
   flex: 1;
   display: flex;
@@ -14,148 +15,188 @@ main {
   padding-top: 25px;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  }
-  .barra-superior {
-    background-image: url('../../img/fondoheader.png'), linear-gradient(to right,#EC0715, #7A1F9D);
-    background-size: cover;
-    height: 63px;
-    display: flex;
-    align-items: center;
+}
 
-  }
-  
-  .barra-superior p {
-    display: flex;
-    align-items: center;
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
+.barra-superior {
+  background-image: url('../../img/fondoheader.png'), linear-gradient(to right, #EC0715, #7A1F9D);
+  background-size: cover;
+  height: 63px;
+  display: flex;
+  align-items: center;
 
-  #pageActually{
-    padding: 20px;
-    padding-left: 1px;
-    display: flex;
-    
-    justify-content: center;
-    font-size: 1.5rem;
-  }
+}
+
+.barra-superior p {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#pageActually {
+  padding: 20px;
+  padding-left: 1px;
+  display: flex;
+
+  justify-content: center;
+  font-size: 1.5rem;
+}
 
 
-  .content {
+.content {
+  width: 31.51rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(50vw - 150px);
+  border: 1px solid #000;
+  border-radius: 4vh;
+  padding: 20px;
+  margin: 25px;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: calc(50vw - 150px);
-    border: 1px solid #000;
-    border-radius: 4vh;
-    padding: 20px;
-    margin: 25px;
-  }
+h2 {
+  font-size: 35px;
+}
 
-  h2{
-    font-size: 35px;
-  }
-  
-  .card{
-    display: flex;
-    margin: 1px;
-    justify-content: space-between;
-    border-bottom:1px solid #000;
-  }
+.card {
+  padding-top: 1rem;
+  display: flex;
+  margin: 1px;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1rem;
+}
 
-  .cantidad{
-    font-size: 25px;
-    font-family: bold;
-    padding-top: 100px;
-  }
-  .producto {
-    width: 230px;
-  }
+.pedido {
+  width: 26.79rem;
+  padding-bottom: 0.5rem;
+}
 
-  .producto h4 {
-    font-size: 15px;
-  }
+.container-metodo {
+  width: 26.79rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+#metodo {
+  font-size: medium;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
 
-  .cantidad, .producto, .total {
-    padding: 25px;
-  }
+.cantidad {
+  width: 3rem;
+  font-size: 25px;
+  font-family: bold;
+  display: flex;
+  flex-direction: column;
+}
 
-  .totalFinal {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap: 150px;
-  }
+.cantidad p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-top: 1.1rem;
+}
 
-  .totalFinal h4 {
-    padding-left: 30  0px;
-  }
 
-  .botones{
-    margin-top: 68px;
-    margin-bottom: 30px;
-    width: 460px;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  #realizar, #cancelar {
-    width: 214px;
-    height: 68px;
-    border: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-    
+.producto {
+  width: 230px;
+}
+
+.producto h4 {
+  font-size: 15px;
+}
+
+
+.totalFinal {
+  width: 26.79rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 150px;
+}
+
+.totalFinal h4 {
+  padding-left: 30 0px;
+}
+
+.botones {
+  margin-top: 68px;
+  margin-bottom: 30px;
+  width: 460px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#realizar,
+#cancelar {
+  width: 214px;
+  height: 68px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .botones img {
   width: 35px;
   height: 35px;
 }
 
-#cancelar{
+#cancelar {
   background-color: #E22A2A;
 }
 
-#realizar{
+#realizar {
   background-color: #169A3B;
 }
 
-  #pollo {
-    background-image: url(' ');
-  }
-  #combos {
-    background-image: url(' ');
-  }
-  #bebidas {
-    background-image: url(' ');
-  }
-  #postres {
-    background-image: url(' ');
-  }
-  #ensaladas {
-    background-image: url(' ');
-  }
-  #extras {
-    background-image: url(' ');
-  }
-  
+#pollo {
+  background-image: url(' ');
+}
+
+#combos {
+  background-image: url(' ');
+}
+
+#bebidas {
+  background-image: url(' ');
+}
+
+#postres {
+  background-image: url(' ');
+}
+
+#ensaladas {
+  background-image: url(' ');
+}
+
+#extras {
+  background-image: url(' ');
+}
