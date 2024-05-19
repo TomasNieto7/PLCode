@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema de ventas</title>
   <link rel="stylesheet" href="./css/carrito.css" />
+  <link rel="stylesheet" href="../ui/css/modal.css">
   <script defer src="./js/pedidos/carrito.js"></script>
 </head>
 
@@ -33,11 +34,12 @@
       </div>
       <div class="container-metodo">
         <select name="" id="metodo">
-          <option value="1" selected disabled>SELECCIONE UN METODO DE PAGO</option>
-          <option value="2">EFECTIVO</option>
-          <option value="3">DEBITO</option>
-          <option value="3">CREDITO</option>
+          <option value="EFECTIVO">EFECTIVO</option>
+          <option value="DEBITO">DEBITO/CREDITO</option>
         </select>
+      </div>
+      <div id="resumen">
+        
       </div>
     </section>
     <section class="botones">
@@ -45,6 +47,15 @@
       <button id="realizar">Realizar pedido</button>
     </section>
   </main>
+  <dialog id="modal" class="modaladmon">
+    <div>
+      <button class="cerraradmon" id="cerraradmon">X</button>
+      <h2>CONFIRMACIÓN</h2>
+      <div id="informacion">
+
+      </div>
+    </div>
+  </dialog>
 </body>
 
 </html>
