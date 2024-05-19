@@ -80,8 +80,11 @@ realizar.addEventListener("click", (e) => {
   const notas = [];
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
-  let fecha = new Date();
-  fecha = fecha.toString()
+  let fechaActual = new Date();
+  const horaLocal = fechaActual.toLocaleTimeString();
+  const dia = fechaActual.toLocaleDateString()
+  const fecha = {dia, horaLocal}
+  const dateSaved = JSON.stringify(fecha)
   let atendio = 'juan'
   let metodoPago = 'efectivo'
   const detalles = JSON.stringify(ordenes)
@@ -89,7 +92,7 @@ realizar.addEventListener("click", (e) => {
   let newNota = {
     monto: precioTotal,
     metodoPago: metodoPago,
-    fecha: fecha,
+    fecha: dateSaved,
     atendio:atendio,
     detalles: detalles
   };

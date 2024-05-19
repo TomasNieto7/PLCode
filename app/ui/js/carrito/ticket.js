@@ -12,17 +12,28 @@ const {
 const ticket = document.querySelector(".orden");
 
 let notas = [];
+let ordenes = [];
 
 ipcRenderer.send("client:getVentasActual");
 ipcRenderer.on("server:getVentasActual", (e, args) => {
   notas = JSON.parse(args);
   renderVentaID(notas)
+  renderOrdenes(notas.detalles);
+  renderDate(notas.fecha)
 });
 
 const renderVentaID = (venta) => {
     const ventaId = venta.ventaId
     const numOrden = document.querySelector(".numOrden");
     numOrden.innerHTML = `Orden #${ventaId}`
+}
+
+const renderDate = (date) => {
+    const fecha = JSON.parse(date);
+    const $hora=document.querySelector('.hora'),
+    $fecha= document.querySelector('.fecha');
+    $hora.innerHTML=`Hora: ${fecha.horaLocal}`;
+    $fecha.innerHTML= `FECHA: ${fecha.dia}`;
 }
 
 ipcRenderer.send('client:getLocal')
@@ -39,16 +50,9 @@ const renderLocal = (local) => {
     address.innerHTML = `${local.address}`
 }
 
-let ordenes = [];
-
-ipcRenderer.send("client:getOrdenes");
-
-ipcRenderer.on("server:getOrdenes", (e, args) => {
-    ordenes = JSON.parse(args);
-    renderOrdenes(ordenes);
-});
 
 const renderOrdenes = (ordenes) => {
+    ordenes = JSON.parse(ordenes);
     ordenes.forEach((orden) => {
         ticket.innerHTML += `
                 <div class="bodyTable">
@@ -74,27 +78,6 @@ const renderOrdenes = (ordenes) => {
     });
 }
 
-const $hora=document.querySelector('.hora'),
-$fecha= document.querySelector('.fecha');
-
-function Reloj() {
-    let f=new Date(),
-    day = f.getDate(),
-    month= f.getMonth()+1,
-    year= f.getFullYear();
-    weekDay=f.getDay();
-
-    day=('0'+day).slice(-2);
-    mes=('0'+month).slice(-2);
-
-    let timeString=f.toLocaleTimeString();
-    $hora.innerHTML=`Hora: `+ timeString;
-
-    $fecha.innerHTML= `FECHA: ${day}-${month}-${year}`;
-}
-setInterval(() =>{
-    Reloj()
-},1000);
 
 // Espera a que la página se cargue completamente
 window.onload = function () {

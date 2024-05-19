@@ -35,6 +35,8 @@ const renderizarNotas = (notas) => {
     montoDouble = parseFloat(nota.monto);
     totalMonto += parseFloat(nota.monto);
     flagID = esPar(index);
+    const fechaA = JSON.parse(nota.fecha)
+    const fecha = `${fechaA.dia}   -  ${fechaA.horaLocal}`
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -42,7 +44,7 @@ const renderizarNotas = (notas) => {
       <td>${nota.ventaId}</td>
       <td>${montoDouble.toFixed(2)}</td>
       <td>${nota.metodoPago}</td>
-      <td>${nota.fecha}</td>
+      <td>${fecha}</td>
       <td>${nota.atendio}</td>
       <td> <img class="btnEdit" src="../img/down.png" /> </td>
     `;
