@@ -120,13 +120,14 @@ btnCloseModal.addEventListener('click', e => {
 const realizar = document.getElementById("realizar");
 realizar.addEventListener("click", (e) => {
   e.preventDefault();
-  generarNotaVenta();
+ 
   
   if (metodoPago === 'EFECTIVO') {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'DEBITO/CREDITO') {
     window.location.href = "./components/carrito/ticket.html";
+    generarNotaVenta();
   }
 });
 
@@ -143,7 +144,15 @@ const actualizarModal = () => {
     if (pagoEfectivo) {
       pagoEfectivo.addEventListener('input', actualizarCambio);
     }
+    const ConfirmarPedido = document.getElementById("confirmar");
+    ConfirmarPedido.addEventListener("click", (e) => {
+      e.preventDefault();
+      generarNotaVenta();
+      window.location.href = "./components/carrito/ticket.html";
+    });
 };
+
+
 
 const actualizarCambio = () => {
   const totalPago = parseFloat(total.innerHTML.replace('$', '')); 
