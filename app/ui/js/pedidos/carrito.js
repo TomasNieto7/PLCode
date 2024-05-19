@@ -73,6 +73,16 @@ const getTotal = (ordenes) => {
   total.innerHTML = `$${precio.toFixed(2)}`;
 };
 
+let metodoPago
+
+const selectElement = document.getElementById("metodo");
+selectElement.addEventListener("change", function() {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    metodoPago = selectedOption.text;
+    console.log(metodoPago);
+});
+
+
 const realizar = document.getElementById("realizar");
 realizar.addEventListener("click", (e) => {
   e.preventDefault()
@@ -83,17 +93,20 @@ realizar.addEventListener("click", (e) => {
   let fechaActual = new Date();
   const horaLocal = fechaActual.toLocaleTimeString();
   const dia = fechaActual.toLocaleDateString()
-  const fecha = {dia, horaLocal}
+  const fecha = {
+    dia,
+    horaLocal
+  }
   const dateSaved = JSON.stringify(fecha)
   let atendio = 'juan'
-  let metodoPago = 'efectivo'
+
   const detalles = JSON.stringify(ordenes)
 
   let newNota = {
     monto: precioTotal,
     metodoPago: metodoPago,
     fecha: dateSaved,
-    atendio:atendio,
+    atendio: atendio,
     detalles: detalles
   };
 
@@ -102,5 +115,5 @@ realizar.addEventListener("click", (e) => {
 
   console.log(newNota);
 
-  window.location.href = "./components/carrito/ticket.html";
+  //window.location.href = "./components/carrito/ticket.html";
 });
