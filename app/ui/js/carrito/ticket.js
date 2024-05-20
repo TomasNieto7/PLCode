@@ -17,11 +17,13 @@ let ordenes = [];
 ipcRenderer.send("client:getVentasActual");
 ipcRenderer.on("server:getVentasActual", (e, args) => {
   notas = JSON.parse(args);
+  console.log(notas);
   renderVentaID(notas);
   renderOrdenes(notas.detalles);
   renderDate(notas.fecha);
   renderAtendidoPor(notas.atendio);
   renderPagoInfo(notas.monto);
+  renderMetodo(notas.metodoPago)
 });
 
 const renderVentaID = (venta) => {
@@ -78,7 +80,7 @@ const renderOrdenes = (ordenes) => {
                         ${orden.cantidad}
                     </p>
                     <p class="f3">
-                        $ ${orden.total}.00
+                        $ ${parseFloat(orden.total).toFixed(2)}
                     </p>
                 </div>
               `;
@@ -89,21 +91,37 @@ const renderPagoInfo = (monto) => {
     const subtotal = document.querySelector("#subtotal");
     const iva = document.querySelector("#iva");
     const total = document.querySelector("#total");
-    const metodoPago = document.querySelector("#metodoPago");
-    const cambio = document.querySelector("#cambio");
-    
-    var metodoPagoA = 1000;
 
     const montoA = parseInt(monto);
     const ivaA = montoA * 0.16;
     var subtotalA = montoA - ivaA;
-    var cambioA = metodoPagoA - montoA;
 
-    subtotal.innerHTML = `${subtotalA}`
-    iva.innerHTML = `${ivaA}`
-    total.innerHTML = `${montoA}`
-    metodoPago.innerHTML = `${metodoPagoA}`
-    cambio.innerHTML = `${cambioA}`
+    subtotal.innerHTML = `$${subtotalA.toFixed(2)}`
+    iva.innerHTML = `$${ivaA.toFixed(2)}`
+    total.innerHTML = `$${montoA.toFixed(2)}`
+}
+
+const renderMetodo = (metodoPago) => {
+    const metodo = document.getElementById("metodoPagoTxt")
+    metodo.innerHTML = `${metodoPago}`
+}
+
+ipcRenderer.send('client:getPagoCambio')
+ipcRenderer.on('server:getPagoCambio', (e, data) => {
+    const metodoPago = JSON.parse(data) 
+    console.log(metodoPago);
+    renderPago(metodoPago.pago)
+    renderCambio(metodoPago.cambio)
+})
+
+const renderPago = (pago) => {
+    const pagoA = document.getElementById("metodoPago")
+    pagoA.innerHTML = `$${parseFloat(pago).toFixed(2)}`
+}
+
+const renderCambio = (cambio) => {
+    const cambioA = document.getElementById("cambio")
+    cambioA.innerHTML = `$${parseFloat(cambio).toFixed(2)}`
 }
 
 // Espera a que la página se cargue completamente

@@ -1,6 +1,6 @@
 const users = [{
         id: "100001",
-        name: "Juan",
+        name: "admin",
         rol: "Admin",
     },
     {
@@ -10,7 +10,12 @@ const users = [{
     },
     {
         id: "100003",
-        name: "Juan",
+        name: "Maria",
+        rol: "Trabajador"
+    },
+    {
+        id: "123456",
+        name: "Luis",
         rol: "Trabajador"
     },
 ]
