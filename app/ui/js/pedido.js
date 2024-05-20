@@ -2,22 +2,46 @@ const {
   ipcRenderer
 } = require("electron");
 
-function generateCustomID() {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let id = '';
-  for (let i = 0; i < 8; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    id += characters.charAt(randomIndex);
-  }
-  return id;
-}
 
-console.log(generateCustomID()); // Ejemplo de ID generado: '7n805l8n'
+let userRol 
+
+ipcRenderer.send("client:getUsersLogin")
+
+ipcRenderer.on("server:getUsersLogin", (e, data) => {
+    const user = JSON.parse(data)
+    userRol = user.rol
+    renderBP(userRol)
+})
+
+const renderBP = (rol) => {
+  const backPage = document.getElementById("pageActually")
+  if (rol === 'Admin' || rol === 'Jefe') {
+    backPage.className = 'pageActually'
+    backPage.innerHTML = `
+      <img id="iconFlecha" src="../img/menu/retroceso.png" alt="">
+      <p>Crear Pedido</p>
+    `
+  } else {
+    backPage.className = 'pageActually'
+    backPage.innerHTML = `
+    <img id="iconFlecha" src="../img/menu/retroceso.png" alt="">
+      <p>Cerrar Sesion</p>
+    `
+  }
+
+
+}
 
 const backPage = document.querySelector('#pageActually')
 backPage.addEventListener('click', e => {
   e.preventDefault
-  window.location.href = './inicio.html'
+  if (userRol === 'Admin' || userRol === 'Jefe') {
+    window.location.href = './inicio.html'
+  } else {
+    ipcRenderer.send("client:setUsersLogin")
+    window.location.href = 'login.html'
+  }
+  
 })
 
 const endPedido = document.querySelector('#endPedido')

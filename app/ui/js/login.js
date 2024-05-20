@@ -6,17 +6,28 @@ const modal = document.querySelector('#modal')
 const login = document.querySelector('.buttonI')
 const passwordInput = document.getElementById("contraeña");
 const errorLabel = document.getElementById("errorLabel");
+const ID = document.getElementById("email");
+
+let userAux
 
 login.addEventListener('click', (e) => {
     e.preventDefault()
-
     const userId = document.querySelector('#email').value
-    //ipcRenderer.send('client:ValidationLogin', userId)
-    if (userId === "admin") {
+    ipcRenderer.send('client:ValidationLogin', userId)
+})
+
+ipcRenderer.on('server:ValidationLogin', (e, user) => {
+    console.log(user);
+    userAux = JSON.parse(user)
+
+    if (userAux.rol==='Admin' || userAux.rol==='Jefe') {
         modal.classList.add("alertStyle");
         modal.showModal()
-        // console.log(2);
-    } else window.location.href = 'crearPedido.html'
+    } 
+    else if (userAux.rol==='Trabajador') window.location.href = 'crearPedido.html'
+    else {
+        limpiarID()
+    } 
 })
 
 /*
@@ -32,7 +43,9 @@ const btnCloseModal = document.querySelector('#cerraradmon')
 btnCloseModal.addEventListener('click', e => {
     modal.classList.remove("alertStyle");
     modal.close()
+    ipcRenderer.send("client:setUsersLogin")
     limpiarPassoword();
+    limpiarID()
 })
 
 const botonadmon = document.getElementById("botonadmon")
@@ -40,22 +53,26 @@ const botonadmon = document.getElementById("botonadmon")
 botonadmon.addEventListener("click", e => {
     e.preventDefault();
     const password = passwordInput.value;
-    if (password !== "admin") {
-        passwordInput.classList.add("error");
-        errorLabel.innerText = "Contraseña incorrecta";
-    } else {
-        window.location.href = 'inicio.html';
-    }
+    ipcRenderer.send("client:validatePassword", password)
+    ipcRenderer.on("server:validatePassword", (e, flag) => {
+        if (!flag) {
+            passwordInput.classList.add("error");
+            errorLabel.innerText = "Contraseña incorrecta";
+        } else {
+            window.location.href = 'inicio.html';
+        }
+    })
 });
+
 const limpiarPassoword = () => {
     passwordInput.value = '';
     passwordInput.classList.remove("error");
     errorLabel.innerText = "";
 }
 
+const limpiarID= () => {
+    ID.value = '';
+    ID.classList.remove("error");
+    errorLabel.innerText = "";
+}
 
-ipcRenderer.on('server:ValidationLogin', (e, flag) => {
-    if (flag) {
-        window.location.href = 'inicio.html'
-    } else alert('Id or password incorrect')
-})
