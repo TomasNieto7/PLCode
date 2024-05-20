@@ -12,6 +12,16 @@ const modalLoad = document.querySelector('#modalLoad')
 const btnCloseModal = document.querySelectorAll('.cerraradmon')
 
 let ordenes = [];
+let atendioA
+let precioTotalA
+
+ipcRenderer.send("client:getUsersLogin")
+
+ipcRenderer.on("server:getUsersLogin", (e, arg) => {
+  const user = JSON.parse(arg)
+  atendioA = user.name
+  console.log(atendioA);
+})
 
 ipcRenderer.send("client:getOrdenes");
 
@@ -79,19 +89,23 @@ const getTotal = (ordenes) => {
 let metodoPago
 
 const selectElement = document.getElementById("metodo");
-selectElement.addEventListener("change", function() {
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    metodoPago = selectedOption.text;
-   
+selectElement.addEventListener("change", function () {
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+  metodoPago = selectedOption.text;
+
 });
 
-const generarNotaVenta = () => { const notas = [];
+const generarNotaVenta = () => {
+  const notas = [];
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
+  precioTotalA = precioTotal
   var fechaA = new Date(); // Fecha actual
   var zonaHoraria = 'America/Chihuahua'; // Cambia esto según tu zona horaria
 
-  var opciones = { timeZone: zonaHoraria };
+  var opciones = {
+    timeZone: zonaHoraria
+  };
   const dia = fechaA.toLocaleDateString('es-CL', opciones);
   const horaLocal = fechaA.toLocaleTimeString('es-CL', opciones);
 
@@ -101,7 +115,6 @@ const generarNotaVenta = () => { const notas = [];
   }
 
   const dateSaved = JSON.stringify(fecha)
-  let atendio = 'juan'
 
   const detalles = JSON.stringify(ordenes)
 
@@ -109,7 +122,7 @@ const generarNotaVenta = () => { const notas = [];
     monto: precioTotal,
     metodoPago: metodoPago,
     fecha: dateSaved,
-    atendio: atendio,
+    atendio: atendioA,
     detalles: detalles
   };
 
@@ -121,7 +134,7 @@ const generarNotaVenta = () => { const notas = [];
 
 btnCloseModal.forEach(btn => {
   btn.addEventListener('click', e => {
-    const modalToClose = e.target.closest('dialog'); 
+    const modalToClose = e.target.closest('dialog');
     modalToClose.classList.remove("alertStyle");
     modalToClose.close();
   });
@@ -130,13 +143,15 @@ btnCloseModal.forEach(btn => {
 const realizar = document.getElementById("realizar");
 realizar.addEventListener("click", (e) => {
   e.preventDefault();
- 
-  
+
+
   if (metodoPago === 'EFECTIVO') {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
     modalCarga();
+    ipcRenderer.send("client:setPago", precioTotalA)
+    ipcRenderer.send("client:setCambio", 0)
   }
 });
 
@@ -148,14 +163,14 @@ const actualizarModal = () => {
     <p>Ingrese el monto con el que va a pagar</p>
     <input type="number" id="pagoEfectivo" placeholder="Monto a pagar" required>
     <p>Cambio: <span id="cambio">0.00</span></p>
-    <button id="confirmar" disabled>Confirmar pedido</button>`; 
+    <button id="confirmar" disabled>Confirmar pedido</button>`;
 
-  const pagoEfectivo = document.getElementById("pagoEfectivo"); 
+  const pagoEfectivo = document.getElementById("pagoEfectivo");
   if (pagoEfectivo) {
     pagoEfectivo.addEventListener('input', actualizarCambio);
     pagoEfectivo.addEventListener('input', () => {
       const confirmarBtn = document.getElementById("confirmar");
-      confirmarBtn.disabled = !pagoEfectivo.value; 
+      confirmarBtn.disabled = !pagoEfectivo.value;
     });
   }
 
@@ -167,32 +182,32 @@ const actualizarModal = () => {
     modal.close();
     modalCarga();
   });
-};  
+};
 
 
 const modalCarga = () => {
-  
-   modalLoad.classList.add("alertStyle");
-   modalLoad.showModal();
-   generarNotaVenta();
-   setTimeout(() => {
-     modalLoad.close();
-     
-     
-     modalFnl.classList.add("alertStyle");
-     modalFnl.showModal();
 
-     
-     setTimeout(() => {
-       modalFnl.close();
-       window.location.href = "./components/carrito/ticket.html";
-     }, 6000); 
-   }, 4000); 
+  modalLoad.classList.add("alertStyle");
+  modalLoad.showModal();
+  generarNotaVenta();
+  setTimeout(() => {
+    modalLoad.close();
+
+
+    modalFnl.classList.add("alertStyle");
+    modalFnl.showModal();
+
+
+    setTimeout(() => {
+      modalFnl.close();
+      window.location.href = "./components/carrito/ticket.html";
+    }, 6000);
+  }, 4000);
 }
 const actualizarCambio = () => {
-  const totalPago = parseFloat(total.innerHTML.replace('$', '')); 
-  const efectivo = parseFloat(pagoEfectivo.value || 0); 
-  const cambio = efectivo - totalPago; 
+  const totalPago = parseFloat(total.innerHTML.replace('$', ''));
+  const efectivo = parseFloat(pagoEfectivo.value || 0);
+  const cambio = efectivo - totalPago;
   ipcRenderer.send("client:setCambio", cambio)
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };

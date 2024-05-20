@@ -71,11 +71,13 @@ const deleteVentasDiarias = () => {
 
 const getPagoCambio = () => {
     ipcMain.on('client:getPagoCambio', (e,args) => {
+        
         const obj = {
             pago,
             cambio
         }
-        e.reply('client:getPagoCambio', JSON.stringify(obj))
+        console.log(obj);
+        e.reply('server:getPagoCambio', JSON.stringify(obj))
     })
 }
 
