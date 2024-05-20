@@ -162,6 +162,7 @@ const actualizarModal = () => {
   const ConfirmarPedido = document.getElementById("confirmar");
   ConfirmarPedido.addEventListener("click", (e) => {
     e.preventDefault();
+    ipcRenderer.send("client:setPago", pagoEfectivo.value)
     modal.classList.remove("alertStyle");
     modal.close();
     modalCarga();
@@ -192,6 +193,7 @@ const actualizarCambio = () => {
   const totalPago = parseFloat(total.innerHTML.replace('$', '')); 
   const efectivo = parseFloat(pagoEfectivo.value || 0); 
   const cambio = efectivo - totalPago; 
+  ipcRenderer.send("client:setCambio", cambio)
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };
 const modalRechazo = document.getElementById("modalRechazo");

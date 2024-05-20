@@ -4,6 +4,9 @@ const {
 
 const Venta = require("../models/ventas")
 
+let pago
+let cambio
+
 const getVentas = () => {
     ipcMain.on("client:getVentas", async (e, arg) => {
         const ventas = await Venta.find();
@@ -52,7 +55,6 @@ const getVentaID = async (data) => {
 const newVenta = () => {
     ipcMain.on('client:newVenta', async (e, arg) => {
         const ventaData = await getVentaID(arg)
-        console.log(ventaData);
         const newVenta = new Venta(ventaData)
         const ventaSaved = await newVenta.save();
         e.reply("server:newVenta", JSON.stringify(ventaSaved))
@@ -62,9 +64,32 @@ const newVenta = () => {
 const deleteVentasDiarias = () => {
     ipcMain.on("client:deleteAll", async (e, args) => {
         const Ventas = await Venta.deleteMany();
-        console.log(Ventas);
         const ventas = await Venta.find();
         e.reply('server:deleteAll', JSON.stringify(ventas))
+    })
+}
+
+const getPagoCambio = () => {
+    ipcMain.on('client:getPagoCambio', (e,args) => {
+        const obj = {
+            pago,
+            cambio
+        }
+        e.reply('client:getPagoCambio', JSON.stringify(obj))
+    })
+}
+
+const setPago = () => {
+    ipcMain.on('client:setPago', (e,args) => {
+        pago = args
+        console.log(pago);
+    })
+}
+
+const setCambio = () => {
+    ipcMain.on('client:setCambio', (e,args) => {
+        cambio = args
+        console.log(cambio);
     })
 }
 
@@ -73,5 +98,8 @@ module.exports = {
     getVentas,
     newVenta,
     getVentasActual,
-    deleteVentasDiarias
+    deleteVentasDiarias,
+    getPagoCambio,
+    setPago,
+    setCambio
 }
