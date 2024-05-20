@@ -1,7 +1,7 @@
 const { BrowserWindow, ipcMain } = require("electron")
 const path = require("path"); // Asegúrate de importar el módulo 'path'
 const {getUsers, newUser, validation, validationLogin, getUsersLogin, setUsersLogin , validatePassword} = require("./users.js")
-const {getVentas, newVenta, getVentasActual} = require("./ventasDiarias.js")
+const {getVentas, newVenta, getVentasActual, deleteVentasDiarias} = require("./ventasDiarias.js")
 const {getOrdenes, newOrden, reloadOrdenes} = require('./ordenes.js');
 const { get } = require("jquery");
 const { getNotas, newNota } = require("./notas.js");
@@ -35,6 +35,7 @@ validatePassword()
 getVentas()
 newVenta()
 getVentasActual()
+deleteVentasDiarias()
 
 getOrdenes()
 newOrden() 
