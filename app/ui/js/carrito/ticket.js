@@ -99,11 +99,11 @@ const renderPagoInfo = (monto) => {
     var subtotalA = montoA - ivaA;
     var cambioA = metodoPagoA - montoA;
 
-    subtotal.innerHTML = `$ ${subtotalA}`
-    iva.innerHTML = `$ ${ivaA}`
-    total.innerHTML = `$ ${montoA}`
+    subtotal.innerHTML = `${subtotalA}`
+    iva.innerHTML = `${ivaA}`
+    total.innerHTML = `${montoA}`
     metodoPago.innerHTML = `${metodoPagoA}`
-    cambio.innerHTML = `$ ${cambioA}`
+    cambio.innerHTML = `${cambioA}`
 }
 
 // Espera a que la página se cargue completamente

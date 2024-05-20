@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú de Pollo Loco</title>
     <link rel="stylesheet" href="./css/ventas/ventas.css" />
+    <link rel="stylesheet" href="./css/modal.css"/>
     <script defer src="./js/VENTASdIARIAS/ventasDiarias.js"></script>
     <script defer src="./js/VENTASdIARIAS/detallesVentas.js"></script>
   </head>
@@ -39,8 +40,20 @@
           </table>
         </div>
       </section>
-      <section>
-        <button id="btnDelete">Borrar Ventas</button>
+      <section class="deteleVentas">
+        <button id="btnShModal">Borrar Ventas</button>
+        <dialog id="modal" class="modaladmon">
+          <div>
+            <button class="cerraradmon" id="cerraradmon">X</button>
+            <h2>AVISO</h2>
+            <div>
+              <p>¿ESTÁ SEGURO QUE QUIERES ELIMINAR ESTOS REGISTROS?</p>
+            </div>
+            <div class="botonadmon">
+              <button id="botonadmon" type="submit" class="buttonad" value="CONFIRMAR">Confirmar</button>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
   </body>

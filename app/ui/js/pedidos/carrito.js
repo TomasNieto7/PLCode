@@ -194,6 +194,14 @@ const actualizarCambio = () => {
   const cambio = efectivo - totalPago; 
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };
+const modalRechazo = document.getElementById("modalRechazo");
+
+const botonModal = document.getElementById("BtnRechazo");
+botonModal.addEventListener("click", e => {
+  e.preventDefault
+  modalRechazo.classList.add("alertStyle");
+  modalRechazo.showModal()
+})
 
 
 //Mostrar en pantalla el cambio

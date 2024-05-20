@@ -179,3 +179,36 @@ img {
   
   width: 30rem;
 }
+
+#btnShModal{
+  width: 214px;
+  height: 68px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: #E22A2A;
+  margin: 50px;
+}
+
+#botonadmon {
+  width: 150px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+  background-color: #FFC702;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#modal p {
+  height: 50px;
+}
+

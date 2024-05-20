@@ -85,8 +85,30 @@ const renderizarNotas = (notas) => {
 
 //"client:deleteAll"
 
-const buttonDelete = document.getElementById('btnDelete')
-buttonDelete.addEventListener('click', e => {
-  ipcRenderer.send("client:deleteAll")
+const buttonShowModal = document.getElementById('btnShModal')
+buttonShowModal.addEventListener('click', e => {
+  // ipcRenderer.send("client:deleteAll")
+  modal.classList.add("alertStyle");
+  modal.showModal()
+
+  const buttonConfirm = document.getElementById('botonadmon')
+  buttonConfirm.addEventListener('click', e =>{
+    ipcRenderer.send("client:deleteAll");
+    modal.classList.remove("alertStyle");
+
+    modal.close();
+  })
+
+  
 })
+
+
+const btnCloseModal = document.querySelector('#cerraradmon')
+
+btnCloseModal.addEventListener('click', e => {
+    modal.classList.remove("alertStyle");
+    modal.close()
+ 
+})
+
 
