@@ -10,6 +10,11 @@ ipcRenderer.on("server:getVentas", (e, args) => {
   renderizarNotas(notas);
 });
 
+ipcRenderer.on('server:deleteAll', (e, args) => {
+  notas = JSON.parse(args);
+  renderizarNotas(notas);
+})
+
 const backPage = document.querySelector('#pageActually');
 backPage.addEventListener('click', e => {
   e.preventDefault();
@@ -76,3 +81,11 @@ const renderizarNotas = (notas) => {
     });
   });
 };
+
+//"client:deleteAll"
+
+const buttonDelete = document.getElementById('btnDelete')
+buttonDelete.addEventListener('click', e => {
+  ipcRenderer.send("client:deleteAll")
+})
+

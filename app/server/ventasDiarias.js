@@ -59,9 +59,19 @@ const newVenta = () => {
     })
 }
 
+const deleteVentasDiarias = () => {
+    ipcMain.on("client:deleteAll", async (e, args) => {
+        const Ventas = await Venta.deleteMany();
+        console.log(Ventas);
+        const ventas = await Venta.find();
+        e.reply('server:deleteAll', JSON.stringify(ventas))
+    })
+}
+
 
 module.exports = {
     getVentas,
     newVenta,
-    getVentasActual
+    getVentasActual,
+    deleteVentasDiarias
 }
