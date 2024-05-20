@@ -3,11 +3,39 @@ const {
 } = require("electron")
 
 const User = require("../models/User")
+const {
+    users, password
+} = require("./data/database")
+
+let userLogin
 
 const getUsers = () => {
     ipcMain.on("get-users", async (e, arg) => {
         const Users = await User.find();
         e.reply("get-users", JSON.stringify(Users));
+    })
+}
+
+const getUsersLogin = () => {
+    ipcMain.on("client:getUsersLogin", async (e, arg) => {
+        e.reply("server:getUsersLogin", JSON.stringify(userLogin));
+    })
+}
+
+const setUsersLogin = () => {
+    ipcMain.on("client:setUsersLogin", (e, arg) => {
+        userLogin = {}
+        console.log(userLogin);
+    })
+}
+
+const validatePassword = () => {
+    ipcMain.on("client:validatePassword", async (e, arg) => {
+        let flag = false
+        if (arg === password) {
+            flag = true
+        }
+        e.reply("server:validatePassword", flag);
     })
 }
 
@@ -17,21 +45,21 @@ const validation = () => {
         const isUserRegistered = await Users.find(user => user.email === data.email)
         let flag = false
         if (isUserRegistered) {
-            flag=true
+            flag = true
         }
         e.reply('server:validation', flag)
     })
 }
 
 const validationLogin = () => {
-    ipcMain.on('client:ValidationLogin', async (e, data) => {
-        const Users = await User.find();
-        const existsUser = await Users.find(user => user.userId === data)
-        let flag 
-        if (existsUser) {
-            flag=true
-        }
-        e.reply('server:ValidationLogin', flag)
+    ipcMain.on('client:ValidationLogin', async (e, userId) => {
+        const Users = users
+        const isUserRegistered = Users.find(user => user.id === userId)
+        if (isUserRegistered) {
+            userLogin = isUserRegistered
+            console.log(userLogin);
+            e.reply('server:ValidationLogin', JSON.stringify(isUserRegistered))
+        } else e.reply('server:ValidationLogin', JSON.stringify('No existe'))
     })
 }
 const existId = (Users, id) => {
@@ -100,5 +128,8 @@ module.exports = {
     getUsers,
     newUser,
     validation,
-    validationLogin
+    validationLogin,
+    getUsersLogin,
+    setUsersLogin,
+    validatePassword
 }

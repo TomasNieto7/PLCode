@@ -136,7 +136,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=textad] {
+input[type=password] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;

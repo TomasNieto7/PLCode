@@ -1,13 +1,21 @@
-const users = [
-    {id:100002,
-    name: "Juan",
-    rol: "admin"
+const users = [{
+        id: "100001",
+        name: "Juan",
+        rol: "Admin",
     },
-    {id:100002,
-    name: "Juan",
-    rol: "admin"
+    {
+        id: "100002",
+        name: "Juan",
+        rol: "Jefe"
+    },
+    {
+        id: "100003",
+        name: "Juan",
+        rol: "Trabajador"
     },
 ]
+
+const password = '123'
 
 const local = "EL POLLO LOCO PLAZA PATIO QUERÉTARO"
 
@@ -17,5 +25,6 @@ const address = 'Av. Revolución 99 A, Puerta del Sol II, 76114 Santiago de Quer
 module.exports = {
     users,
     local,
-    address
+    address,
+    password
 }
