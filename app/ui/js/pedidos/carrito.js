@@ -8,7 +8,8 @@ const autoTable = require('jspdf-autotable')
 
 const pedido = document.querySelector(".pedido");
 const modal = document.querySelector('#modal')
-const btnCloseModal = document.querySelector('#cerraradmon')
+const modalLoad = document.querySelector('#modalLoad')
+const btnCloseModal = document.querySelectorAll('.cerraradmon')
 
 let ordenes = [];
 
@@ -112,10 +113,14 @@ const generarNotaVenta = () => { const notas = [];
 
   console.log(newNota);
 }
-btnCloseModal.addEventListener('click', e => {
-  modal.classList.remove("alertStyle");
-  modal.close()
-})
+
+btnCloseModal.forEach(btn => {
+  btn.addEventListener('click', e => {
+    const modalToClose = e.target.closest('dialog'); 
+    modalToClose.classList.remove("alertStyle");
+    modalToClose.close();
+  });
+});
 
 const realizar = document.getElementById("realizar");
 realizar.addEventListener("click", (e) => {
@@ -126,34 +131,58 @@ realizar.addEventListener("click", (e) => {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'DEBITO/CREDITO') {
-    window.location.href = "./components/carrito/ticket.html";
-    generarNotaVenta();
+    modalCarga();
   }
 });
 
 
 const actualizarModal = () => {
   const info = document.querySelector('#informacion');
-    info.innerHTML = `
-      <p>Total a pagar: ${total.innerHTML}</p>
-      <p>Ingrese el monto con el que va a pagar</p>
-      <input type="number" id="pagoEfectivo" placeholder="Monto a pagar">
-      <p>Cambio: <span id="cambio">0.00</span></p>
-      <button id="confirmar">Confirmar pedido</button>`;
+  info.innerHTML = `
+    <p>Total a pagar: ${total.innerHTML}</p>
+    <p>Ingrese el monto con el que va a pagar</p>
+    <input type="number" id="pagoEfectivo" placeholder="Monto a pagar" required>
+    <p>Cambio: <span id="cambio">0.00</span></p>
+    <button id="confirmar" disabled>Confirmar pedido</button>`; 
 
-    if (pagoEfectivo) {
-      pagoEfectivo.addEventListener('input', actualizarCambio);
-    }
-    const ConfirmarPedido = document.getElementById("confirmar");
-    ConfirmarPedido.addEventListener("click", (e) => {
-      e.preventDefault();
-      generarNotaVenta();
-      window.location.href = "./components/carrito/ticket.html";
+  const pagoEfectivo = document.getElementById("pagoEfectivo"); 
+  if (pagoEfectivo) {
+    pagoEfectivo.addEventListener('input', actualizarCambio);
+    pagoEfectivo.addEventListener('input', () => {
+      const confirmarBtn = document.getElementById("confirmar");
+      confirmarBtn.disabled = !pagoEfectivo.value; 
     });
-};
+  }
+
+  const ConfirmarPedido = document.getElementById("confirmar");
+  ConfirmarPedido.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.classList.remove("alertStyle");
+    modal.close();
+    modalCarga();
+  });
+};  
 
 
+const modalCarga = () => {
+  
+   modalLoad.classList.add("alertStyle");
+   modalLoad.showModal();
+   generarNotaVenta();
+   setTimeout(() => {
+     modalLoad.close();
+     
+     
+     modalFnl.classList.add("alertStyle");
+     modalFnl.showModal();
 
+     
+     setTimeout(() => {
+       modalFnl.close();
+       window.location.href = "./components/carrito/ticket.html";
+     }, 6000); 
+   }, 4000); 
+}
 const actualizarCambio = () => {
   const totalPago = parseFloat(total.innerHTML.replace('$', '')); 
   const efectivo = parseFloat(pagoEfectivo.value || 0); 
