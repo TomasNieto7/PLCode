@@ -29,6 +29,8 @@ const renderizarNotas = (notas) => {
   tbody.innerHTML = '';
 
   let totalMonto = 0;
+  let filaID = 1;
+  let colorIndex = 0
 
   
   notas.forEach((nota, index) => {
@@ -48,11 +50,10 @@ const renderizarNotas = (notas) => {
       <td>${nota.atendio}</td>
       <td> <img class="btnEdit" src="../img/down.png" /> </td>
     `;
-    if (flagID) {
-      tr.id = `one`;
-    } else {
-      tr.id = `two`;
-    }
+    tr.id = `fila_${filaID}`; 
+    filaID++; 
+    tr.style.backgroundColor = colorIndex % 2 === 0 ? '#FDCEA2' : '#FFE6C9';
+    colorIndex++;
     tr.className = `fila_${index}`;
     tbody.appendChild(tr);
   });
