@@ -130,7 +130,7 @@ realizar.addEventListener("click", (e) => {
   if (metodoPago === 'EFECTIVO') {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
-  } else if (metodoPago === 'DEBITO/CREDITO') {
+  } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
     modalCarga();
   }
 });
