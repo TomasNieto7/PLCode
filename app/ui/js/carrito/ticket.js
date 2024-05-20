@@ -17,15 +17,22 @@ let ordenes = [];
 ipcRenderer.send("client:getVentasActual");
 ipcRenderer.on("server:getVentasActual", (e, args) => {
   notas = JSON.parse(args);
-  renderVentaID(notas)
+  renderVentaID(notas);
   renderOrdenes(notas.detalles);
-  renderDate(notas.fecha)
+  renderDate(notas.fecha);
+  renderAtendidoPor(notas.atendio);
+  renderPagoInfo(notas.monto);
 });
 
 const renderVentaID = (venta) => {
     const ventaId = venta.ventaId
     const numOrden = document.querySelector(".numOrden");
     numOrden.innerHTML = `Orden #${ventaId}`
+}
+
+const renderAtendidoPor = (atendido) => {
+    const nombreEmp = document.querySelector("#attendedBy");
+    nombreEmp.innerHTML = `Atendido por: ${atendido}`
 }
 
 const renderDate = (date) => {
@@ -78,6 +85,26 @@ const renderOrdenes = (ordenes) => {
     });
 }
 
+const renderPagoInfo = (monto) => {
+    const subtotal = document.querySelector("#subtotal");
+    const iva = document.querySelector("#iva");
+    const total = document.querySelector("#total");
+    const metodoPago = document.querySelector("#metodoPago");
+    const cambio = document.querySelector("#cambio");
+    
+    var metodoPagoA = 1000;
+
+    const montoA = parseInt(monto);
+    const ivaA = montoA * 0.16;
+    var subtotalA = montoA - ivaA;
+    var cambioA = metodoPagoA - montoA;
+
+    subtotal.innerHTML = `$ ${subtotalA}`
+    iva.innerHTML = `$ ${ivaA}`
+    total.innerHTML = `$ ${montoA}`
+    metodoPago.innerHTML = `${metodoPagoA}`
+    cambio.innerHTML = `$ ${cambioA}`
+}
 
 // Espera a que la página se cargue completamente
 window.onload = function () {

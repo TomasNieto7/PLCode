@@ -87,13 +87,18 @@ selectElement.addEventListener("change", function() {
 const generarNotaVenta = () => { const notas = [];
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
-  let fechaActual = new Date();
-  const horaLocal = fechaActual.toLocaleTimeString();
-  const dia = fechaActual.toLocaleDateString()
+  var fechaA = new Date(); // Fecha actual
+  var zonaHoraria = 'America/Chihuahua'; // Cambia esto según tu zona horaria
+
+  var opciones = { timeZone: zonaHoraria };
+  const dia = fechaA.toLocaleDateString('es-CL', opciones);
+  const horaLocal = fechaA.toLocaleTimeString('es-CL', opciones);
+
   const fecha = {
     dia,
     horaLocal
   }
+
   const dateSaved = JSON.stringify(fecha)
   let atendio = 'juan'
 
