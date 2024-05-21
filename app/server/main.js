@@ -36,7 +36,7 @@ const {
 const {
   getLocal
 } = require("./ticket/local.js");
-
+require('./ticket/flag.js')
 
 function createWindow() {
   const win = new BrowserWindow({

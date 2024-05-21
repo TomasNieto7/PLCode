@@ -209,9 +209,17 @@ const actualizarCambio = () => {
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };
 
+
+let flag
+ipcRenderer.send('client:getVentaFlag')
+ipcRenderer.on('server:getVentaFlag', (e, args) => {
+  flag = args
+})
+
 const modalesPago = () => {
-  const random = Math.random();
-  if (random > 0.5) {
+
+  if (flag) {
+    ipcRenderer.send('client:setVentaFlag', false)
     modalLoad.classList.remove("alertStyle");
     modalLoad.close();
 
@@ -225,6 +233,7 @@ const modalesPago = () => {
       window.location.href = "./components/carrito/ticket.html";
     }, 1000);
   } else {
+    ipcRenderer.send('client:setVentaFlag', true)
     modalLoad.classList.remove("alertStyle");
     modalLoad.close();
 
