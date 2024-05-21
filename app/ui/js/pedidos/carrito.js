@@ -6,6 +6,8 @@ const {
 } = require("jspdf");
 const autoTable = require('jspdf-autotable')
 
+const fs = require('fs');
+
 const pedido = document.querySelector(".pedido");
 const modal = document.querySelector('#modal')
 const modalLoad = document.querySelector('#modalLoad')
@@ -127,6 +129,12 @@ const generarNotaVenta = () => {
 
   ipcRenderer.send("client:newVenta", newNota);
 
+  try {
+    fs.unlinkSync('./ticket.pdf');
+    console.log('Archivo eliminado');
+  } catch (err) {
+    console.error('Ocurrió un error al eliminar el archivo', err);
+  }
 
   console.log(newNota);
 }
