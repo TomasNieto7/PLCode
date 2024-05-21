@@ -99,8 +99,8 @@ const generarNotaVenta = () => {
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
   precioTotalA = precioTotal
-  var fechaA = new Date(); 
-  var zonaHoraria = 'America/Chihuahua'; 
+  var fechaA = new Date();
+  var zonaHoraria = 'America/Chihuahua';
 
   var opciones = {
     timeZone: zonaHoraria
@@ -131,7 +131,7 @@ const generarNotaVenta = () => {
   console.log(newNota);
 }
 
-btnCloseModal.addEventListener('click', e => { 
+btnCloseModal.addEventListener('click', e => {
   modal.classList.remove("alertStyle");
   modal.close();
 });
@@ -145,8 +145,6 @@ realizar.addEventListener("click", (e) => {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
-    ipcRenderer.send("client:setPago", precioTotalA)
-    ipcRenderer.send("client:setCambio", 0)
     modalCarga();
   }
 });
@@ -184,13 +182,13 @@ const actualizarModal = () => {
 const modalCarga = () => {
   modalLoad.classList.add("alertStyle");
   modalLoad.showModal();
- const carga = document.getElementById("preload"); 
- carga.addEventListener("click", (e) => {
-   e.preventDefault();
-   modalesPago();
- });
+  const carga = document.getElementById("preload");
+  carga.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalesPago();
+  });
 
-} 
+}
 const actualizarCambio = () => {
   const totalPago = parseFloat(total.innerHTML.replace('$', ''));
   const efectivo = parseFloat(pagoEfectivo.value || 0);
@@ -199,20 +197,22 @@ const actualizarCambio = () => {
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };
 
-const modalesPago = () =>{
-  const random = Math.random(); 
-  if(random > 0.5){
+const modalesPago = () => {
+  const random = Math.random();
+  if (random > 0.5) {
     modalLoad.classList.remove("alertStyle");
     modalLoad.close();
 
     modalFnl.classList.add("alertStyle");
     modalFnl.showModal();
     generarNotaVenta();
+    ipcRenderer.send("client:setPago", precioTotalA)
+    ipcRenderer.send("client:setCambio", 0)
     setTimeout(() => {
       modalFnl.close();
       window.location.href = "./components/carrito/ticket.html";
-    }, 6000);
-  }else{
+    }, 1000);
+  } else {
     modalLoad.classList.remove("alertStyle");
     modalLoad.close();
 
@@ -226,4 +226,3 @@ const modalesPago = () =>{
 
   }
 };
-
