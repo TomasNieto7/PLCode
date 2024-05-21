@@ -12,6 +12,7 @@ const pedido = document.querySelector(".pedido");
 const modal = document.querySelector('#modal')
 const modalLoad = document.querySelector('#modalLoad')
 const btnCloseModal = document.querySelector('#cerraradmon')
+const errorMetodo = document.getElementById("errorLabelMetodo");
 
 let ordenes = [];
 let atendioA
@@ -94,7 +95,7 @@ const selectElement = document.getElementById("metodo");
 selectElement.addEventListener("change", function () {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   metodoPago = selectedOption.text;
-
+  errorMetodo.innerHTML = "";
 });
 
 const generarNotaVenta = () => {
@@ -154,6 +155,8 @@ realizar.addEventListener("click", (e) => {
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
     modalCarga();
+  }else{
+    errorMetodo.innerHTML = "Seleccione un método de pago";
   }
 });
 

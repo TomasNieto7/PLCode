@@ -153,6 +153,9 @@ input[type=password] {
   font-size: 0.8em ; 
   margin-top: 5px ;
 }
+#errorLabelMetodo{
+  font-size: medium;
+}
 
 #conter-inputLabel{
   width: 100%;
