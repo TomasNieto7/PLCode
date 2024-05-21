@@ -145,7 +145,6 @@ realizar.addEventListener("click", (e) => {
     modal.classList.add("alertStyle");
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
-    modalCarga();
     ipcRenderer.send("client:setPago", precioTotalA)
     ipcRenderer.send("client:setCambio", 0)
     modalCarga();
@@ -167,7 +166,7 @@ const actualizarModal = () => {
     pagoEfectivo.addEventListener('input', actualizarCambio);
     pagoEfectivo.addEventListener('input', () => {
       const confirmarBtn = document.getElementById("confirmar");
-      confirmarBtn.disabled = !pagoEfectivo.value;
+      confirmarBtn.disabled = !pagoEfectivo.value || parseFloat(pagoEfectivo.value) < parseFloat(total.innerHTML.replace('$', ''));
     });
   }
 
@@ -185,7 +184,6 @@ const actualizarModal = () => {
 const modalCarga = () => {
   modalLoad.classList.add("alertStyle");
   modalLoad.showModal();
-  generarNotaVenta();
  const carga = document.getElementById("preload"); 
  carga.addEventListener("click", (e) => {
    e.preventDefault();
@@ -202,14 +200,14 @@ const actualizarCambio = () => {
 };
 
 const modalesPago = () =>{
-  const random = 1;
-  // Math.random(); 
+  const random = Math.random(); 
   if(random > 0.5){
     modalLoad.classList.remove("alertStyle");
     modalLoad.close();
 
     modalFnl.classList.add("alertStyle");
     modalFnl.showModal();
+    generarNotaVenta();
     setTimeout(() => {
       modalFnl.close();
       window.location.href = "./components/carrito/ticket.html";
