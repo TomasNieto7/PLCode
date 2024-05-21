@@ -16,14 +16,14 @@ let ordenes = [];
 
 ipcRenderer.send("client:getVentasActual");
 ipcRenderer.on("server:getVentasActual", (e, args) => {
-  notas = JSON.parse(args);
-  console.log(notas);
-  renderVentaID(notas);
-  renderOrdenes(notas.detalles);
-  renderDate(notas.fecha);
-  renderAtendidoPor(notas.atendio);
-  renderPagoInfo(notas.monto);
-  renderMetodo(notas.metodoPago)
+    notas = JSON.parse(args);
+    console.log(notas);
+    renderVentaID(notas);
+    renderOrdenes(notas.detalles);
+    renderDate(notas.fecha);
+    renderAtendidoPor(notas.atendio);
+    renderPagoInfo(notas.monto);
+    renderMetodo(notas.metodoPago)
 });
 
 const renderVentaID = (venta) => {
@@ -39,10 +39,10 @@ const renderAtendidoPor = (atendido) => {
 
 const renderDate = (date) => {
     const fecha = JSON.parse(date);
-    const $hora=document.querySelector('.hora'),
-    $fecha= document.querySelector('.fecha');
-    $hora.innerHTML=`Hora: ${fecha.horaLocal}`;
-    $fecha.innerHTML= `FECHA: ${fecha.dia}`;
+    const $hora = document.querySelector('.hora'),
+        $fecha = document.querySelector('.fecha');
+    $hora.innerHTML = `Hora: ${fecha.horaLocal}`;
+    $fecha.innerHTML = `FECHA: ${fecha.dia}`;
 }
 
 ipcRenderer.send('client:getLocal')
@@ -108,7 +108,7 @@ const renderMetodo = (metodoPago) => {
 
 ipcRenderer.send('client:getPagoCambio')
 ipcRenderer.on('server:getPagoCambio', (e, data) => {
-    const metodoPago = JSON.parse(data) 
+    const metodoPago = JSON.parse(data)
     console.log(metodoPago);
     renderPago(metodoPago.pago)
     renderCambio(metodoPago.cambio)
@@ -133,28 +133,22 @@ window.onload = function () {
     const heightEnMilimetros = height / 3.7795280352161;
     const widthEnMilimetros = width / 3.7795280352161;
     console.log(heightEnMilimetros);
-    const cmd = document.getElementById('cmd');
-    cmd.addEventListener('click', e => {
+    setTimeout(() => {
         html2canvas(tableContent).then(canvas => {
-
-            let heightTIcket = 100; 
+            let heightTIcket = 100;
             const pdf = new jsPDF({
                 unit: 'mm',
                 format: [width, height],
             });
-            
+
             // Agrega el contenido del canvas al PDF
             pdf.addImage(canvas.toDataURL('image/jpeg'), 'JPEG', 0, 0, width, height);
-            
+
             // Guarda el PDF
             pdf.save('ticket.pdf');
             console.log('PDF guardado');
+            window.location.href = "../../carrito.html";
         });
-    })
-
-    const back = document.getElementById('back'); // Reemplaza con el ID o selector correcto de tu tabla
-    back.addEventListener('click', e => {
-        e.preventDefault
-        window.location.href = "../../carrito.html";
-    })
+        
+    }, 100);
 };
