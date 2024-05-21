@@ -147,8 +147,9 @@ window.onload = function () {
             // Guarda el PDF
             pdf.save('ticket.pdf');
             console.log('PDF guardado');
+            ipcRenderer.send('client:setModalFlag', true)
             window.location.href = "../../carrito.html";
         });
-        
+
     }, 100);
 };

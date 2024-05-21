@@ -17,6 +17,7 @@ const errorMetodo = document.getElementById("errorLabelMetodo");
 let ordenes = [];
 let atendioA
 let precioTotalA
+let precioTotalModal
 
 ipcRenderer.send("client:getUsersLogin")
 
@@ -86,6 +87,7 @@ const getTotal = (ordenes) => {
   ordenes.forEach((orden) => {
     precio += parseFloat(orden.total);
   });
+  precioTotalModal = precio
   total.innerHTML = `$${precio.toFixed(2)}`;
 };
 
@@ -155,7 +157,7 @@ realizar.addEventListener("click", (e) => {
     modal.showModal(actualizarModal());
   } else if (metodoPago === 'CREDITO' || metodoPago === 'DEBITO') {
     modalCarga();
-  }else{
+  } else {
     errorMetodo.innerHTML = "Seleccione un método de pago";
   }
 });
@@ -247,3 +249,40 @@ const modalesPago = () => {
 
   }
 };
+
+let flagModal
+ipcRenderer.send('client:getModalFlag')
+ipcRenderer.on('server:getModalFlag', (e, args) => {
+  flagModal = args
+  if (flagModal) {
+    ipcRenderer.send("client:getVentasActual");
+    ipcRenderer.on("server:getVentasActual", (e, args) => {
+      notas = JSON.parse(args);
+      const metodoRes = document.getElementById('metodoRes')
+      metodoRes.innerHTML = `${notas.metodoPago}`
+    });
+    ipcRenderer.send('client:getPagoCambio')
+    ipcRenderer.on('server:getPagoCambio', (e, data) => {
+      const metodoPago = JSON.parse(data)
+      console.log(metodoPago);
+      const pagoRes = document.getElementById('pagoRes')
+      pagoRes.innerHTML = `$${parseFloat(metodoPago.pago).toFixed(2)}`
+      const cambioRes = document.getElementById('cambioRes')
+      cambioRes.innerHTML = `$${parseFloat(metodoPago.cambio).toFixed(2)}`
+    })
+    const totalRes = document.getElementById("totalRes")
+    totalRes.innerHTML = `$${parseFloat(precioTotalModal).toFixed(2)}`
+    modalCambio.classList.add("alertStyle");
+    modalCambio.showModal()
+  }
+})
+
+const modalCambio = document.getElementById("modalCambio")
+
+modalCambio.addEventListener('click', e => {
+  ipcRenderer.send("client:reloadOrden");
+  modalCambio.classList.remove("alertStyle");
+  modalCambio.close()
+  ipcRenderer.send('client:setModalFlag', false)
+  window.location.href = "./crearPedido.html";
+})

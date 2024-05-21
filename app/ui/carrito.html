@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de ventas</title>
-    <link rel="stylesheet" href="./css/carrito.css" />
-    <link rel="stylesheet" href="../ui/css/modal.css" />
-    <script defer src="./js/pedidos/carrito.js"></script>
-  </head>
 
-  <body>
-    <header id="barra-superior" class="barra-superior">
-      <div id="pageActually">
-        <img id="iconFlecha" src="../img/menu/retroceso.png" alt="" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de ventas</title>
+  <link rel="stylesheet" href="./css/carrito.css" />
+  <link rel="stylesheet" href="../ui/css/modal.css" />
+  <link rel="stylesheet" href="../ui/css/carrito/modalCambio.css" />
+  <script defer src="./js/pedidos/carrito.js"></script>
+</head>
 
-        <p>Carrito</p>
+<body>
+  <header id="barra-superior" class="barra-superior">
+    <div id="pageActually">
+      <img id="iconFlecha" src="../img/menu/retroceso.png" alt="" />
+
+      <p>Carrito</p>
+    </div>
+  </header>
+  <main>
+    <section class="Titulo">
+      <h2>Resumen del pedido</h2>
+    </section>
+    <section class="content">
+      <div class="pedido"></div>
+      <div class="totalFinal">
+        <p>TOTAL:</p>
+        <br />
+        <h4 id="total"></h4>
       </div>
-    </header>
-    <main>
-      <section class="Titulo">
-        <h2>Resumen del pedido</h2>
-      </section>
-      <section class="content">
-        <div class="pedido"></div>
-        <div class="totalFinal">
-          <p>TOTAL:</p>
-          <br />
-          <h4 id="total"></h4>
-        </div>
-        <div class="container-metodo">
-          <select name="" id="metodo">
-            <option value="" disabled selected hidden>Metodo de pago:</option>
-            <option value="">EFECTIVO</option>
-            <option value="">DEBITO</option>
-            <option value="">CREDITO</option>
-          </select>
-        </div>
-        <div id="errorLabelMetodo" class="error-label"></div>
-        <div id="resumen"></div>
-      </section>
-      <section class="botones">
-        <button id="cancelar">Cancelar</button>
-        <button id="realizar">Realizar pedido</button>
-      </section>
-    </main>
-    <dialog id="modal" class="modaladmon">
-      <div>
-        <button class="cerraradmon" id="cerraradmon">X</button>
-        <h2>CONFIRMACIÓN</h2>
-        <div id="informacion"></div>
+      <div class="container-metodo">
+        <select name="" id="metodo">
+          <option value="" disabled selected hidden>Metodo de pago:</option>
+          <option value="">EFECTIVO</option>
+          <option value="">DEBITO</option>
+          <option value="">CREDITO</option>
+        </select>
       </div>
-    </dialog>
-    <dialog id="modalLoad" class="modaladmon">
-      <div id="preload">
-        <img id="preload" src="../img/preload.gif" alt="">
-      </div>
-    </dialog>
+      <div id="errorLabelMetodo" class="error-label"></div>
+      <div id="resumen"></div>
+    </section>
+    <section class="botones">
+      <button id="cancelar">Cancelar</button>
+      <button id="realizar">Realizar pedido</button>
+    </section>
+  </main>
+  <dialog id="modal" class="modaladmon">
+    <div>
+      <button class="cerraradmon" id="cerraradmon">X</button>
+      <h2>CONFIRMACIÓN</h2>
+      <div id="informacion"></div>
+    </div>
+  </dialog>
+  <dialog id="modalLoad" class="modaladmon">
+    <div id="preload">
+      <img id="preload" src="../img/preload.gif" alt="">
+    </div>
+  </dialog>
   </dialog>
   <dialog id="modalFnl" class="modaladmon">
     <div id="preload">
       <img id="imgCheck" src="../img/check.png" alt="">
       <p>PAGO REALIZADO</p>
-    
+
     </div>
   </dialog>
   <dialog id="modalRechazo" class="modaladmon">
@@ -72,8 +74,23 @@
   </dialog>
   <dialog id="modalCambio" class="modaladmon">
     <div id="container-cambio">
+      <div class="conteRes">
+        <div id="totalResDiv">
+          <p id="totalResText">Total:</p>
+          <p id="totalRes"></p>
+        </div>
+        <div id="metodoPagoRes">
+          <p id="metodoRes"></p>
+          <p id="pagoRes"></p>
+        </div>
+      </div>
+      <div id="cambioResdiv" class="resumen">
+        <p>Cambio</p>
+        <p id="cambioRes"></p>
+      </div>
     </div>
   </dialog>
 
-  </body>
+</body>
+
 </html>

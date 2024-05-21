@@ -11,3 +11,15 @@ ipcMain.on('client:getVentaFlag', (e, args) => {
 ipcMain.on('client:setVentaFlag', (e, args) => {
     flag = args
 })
+
+let flagModal = false
+
+ipcMain.on('client:getModalFlag', (e, args) => {
+    console.log(flagModal);
+    e.reply('server:getModalFlag', flagModal)
+})
+
+ipcMain.on('client:setModalFlag', (e, args) => {
+    flagModal = args
+    console.log(flagModal);
+})
