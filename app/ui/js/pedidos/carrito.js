@@ -9,7 +9,7 @@ const autoTable = require('jspdf-autotable')
 const pedido = document.querySelector(".pedido");
 const modal = document.querySelector('#modal')
 const modalLoad = document.querySelector('#modalLoad')
-const btnCloseModal = document.querySelectorAll('.cerraradmon')
+const btnCloseModal = document.querySelector('#cerraradmon')
 
 let ordenes = [];
 let atendioA
@@ -96,12 +96,11 @@ selectElement.addEventListener("change", function () {
 });
 
 const generarNotaVenta = () => {
-  const notas = [];
 
   let precioTotal = ordenes.reduce((total, orden) => total + parseFloat(orden.total), 0).toString();
   precioTotalA = precioTotal
-  var fechaA = new Date(); // Fecha actual
-  var zonaHoraria = 'America/Chihuahua'; // Cambia esto según tu zona horaria
+  var fechaA = new Date(); 
+  var zonaHoraria = 'America/Chihuahua'; 
 
   var opciones = {
     timeZone: zonaHoraria
@@ -132,12 +131,9 @@ const generarNotaVenta = () => {
   console.log(newNota);
 }
 
-btnCloseModal.forEach(btn => {
-  btn.addEventListener('click', e => {
-    const modalToClose = e.target.closest('dialog');
-    modalToClose.classList.remove("alertStyle");
-    modalToClose.close();
-  });
+btnCloseModal.addEventListener('click', e => { 
+  modal.classList.remove("alertStyle");
+  modal.close();
 });
 
 const realizar = document.getElementById("realizar");
@@ -152,6 +148,7 @@ realizar.addEventListener("click", (e) => {
     modalCarga();
     ipcRenderer.send("client:setPago", precioTotalA)
     ipcRenderer.send("client:setCambio", 0)
+    modalCarga();
   }
 });
 
@@ -180,30 +177,22 @@ const actualizarModal = () => {
     ipcRenderer.send("client:setPago", pagoEfectivo.value)
     modal.classList.remove("alertStyle");
     modal.close();
-    modalCarga();
+    window.location.href = "./components/carrito/ticket.html";
   });
 };
 
 
 const modalCarga = () => {
-
   modalLoad.classList.add("alertStyle");
   modalLoad.showModal();
   generarNotaVenta();
-  setTimeout(() => {
-    modalLoad.close();
+ const carga = document.getElementById("preload"); 
+ carga.addEventListener("click", (e) => {
+   e.preventDefault();
+   modalesPago();
+ });
 
-
-    modalFnl.classList.add("alertStyle");
-    modalFnl.showModal();
-
-
-    setTimeout(() => {
-      modalFnl.close();
-      window.location.href = "./components/carrito/ticket.html";
-    }, 6000);
-  }, 4000);
-}
+} 
 const actualizarCambio = () => {
   const totalPago = parseFloat(total.innerHTML.replace('$', ''));
   const efectivo = parseFloat(pagoEfectivo.value || 0);
@@ -211,38 +200,32 @@ const actualizarCambio = () => {
   ipcRenderer.send("client:setCambio", cambio)
   document.getElementById('cambio').textContent = cambio.toFixed(2);
 };
-const modalRechazo = document.getElementById("modalRechazo");
 
-const botonModal = document.getElementById("BtnRechazo");
-botonModal.addEventListener("click", e => {
-  e.preventDefault
-  modalRechazo.classList.add("alertStyle");
-  modalRechazo.showModal()
-})
+const modalesPago = () =>{
+  const random = 1;
+  // Math.random(); 
+  if(random > 0.5){
+    modalLoad.classList.remove("alertStyle");
+    modalLoad.close();
 
+    modalFnl.classList.add("alertStyle");
+    modalFnl.showModal();
+    setTimeout(() => {
+      modalFnl.close();
+      window.location.href = "./components/carrito/ticket.html";
+    }, 6000);
+  }else{
+    modalLoad.classList.remove("alertStyle");
+    modalLoad.close();
 
-//Mostrar en pantalla el cambio
-// const genResumen = () => {
-//   const resumen = document.getElementById('resumen');
-//   const valorSelect = document.getElementById('metodo');
-//   const infoSelec = valorSelect.value;
+    modalRechazo.classList.add("alertStyle");
+    modalRechazo.showModal();
+    const rechazoMdl = document.getElementById("modalRechazo");
+    rechazoMdl.addEventListener("click", e => {
+      e.preventDefault
+      window.location.href = "./carrito.html";
+    });
 
-//   if (infoSelec === 'EFECTIVO') {
-//     resumen.innerHTML = `
-//       <p>Ingrese el monto con el que va a pagar</p>
-//       <input type="number" id="pagoEfectivo" placeholder="Monto a pagar">
-//       <p>Cambio: <span id="cambio">0.00</span></p>`;
+  }
+};
 
-//     if (pagoEfectivo) {
-//       pagoEfectivo.addEventListener('input', actualizarCambio);
-//     }
-
-//   } else if (infoSelec === 'DEBITO') {
-//     resumen.innerHTML = ` `;
-//   }
-// };
-
-// genResumen();
-
-
-// selectElement.addEventListener("change", genResumen);
