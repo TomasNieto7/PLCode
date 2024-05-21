@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       window.location.href = "../../crearPedido.html";
     } else {
-      alert("Debe agregar al menos un producto antes de continuar.");
+      ModalesOreden();
     }
   });
 

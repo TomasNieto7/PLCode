@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú de Pollo Loco</title>
     <link rel="stylesheet" href="../../css/pedido/tabla.css" />
+    <link rel="stylesheet" href="../../css/modal.css">
     <script defer src="../../js/pedidos/bebidas.js"></script>
     <script defer src="../../js/pedidos/orden.js"></script>
+    <script defer src="../../js/pedidos/modalesOrden.js"></script>
   </head>
 
   <body>
@@ -120,5 +122,12 @@
         </button>
       </section>
     </main>
+    <dialog id="abrir" class="modal1">
+      <div class="containerModal">
+        <button class="cerrar">X</button>
+        <h2>AVISO</h2>
+        <p>NO HAY ELEMENTOS PARA GENERAR EL PEDIDO</p>
+      </div>
+    </dialog>
   </body>
 </html>
