@@ -6,6 +6,7 @@ const modal = document.querySelector('#modal')
 const login = document.querySelector('.buttonI')
 const passwordInput = document.getElementById("contraeña");
 const errorLabel = document.getElementById("errorLabel");
+const errorLabelLog = document.getElementById("errorLabelLog");
 const ID = document.getElementById("email");
 
 let userAux
@@ -23,9 +24,11 @@ ipcRenderer.on('server:ValidationLogin', (e, user) => {
     if (userAux.rol==='Admin' || userAux.rol==='Jefe') {
         modal.classList.add("alertStyle");
         modal.showModal()
+        errorLabelLog.innerText = "";
     } 
     else if (userAux.rol==='Trabajador') window.location.href = 'crearPedido.html'
     else {
+        errorLabelLog.innerText = "Clave incorrecta";
         limpiarID()
     } 
 })
@@ -73,6 +76,4 @@ const limpiarPassoword = () => {
 const limpiarID= () => {
     ID.value = '';
     ID.classList.remove("error");
-    errorLabel.innerText = "";
 }
-
