@@ -180,6 +180,7 @@ const actualizarModal = () => {
   ConfirmarPedido.addEventListener("click", (e) => {
     e.preventDefault();
     ipcRenderer.send("client:setPago", pagoEfectivo.value)
+    generarNotaVenta();
     modal.classList.remove("alertStyle");
     modal.close();
     window.location.href = "./components/carrito/ticket.html";
