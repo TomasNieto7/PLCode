@@ -1,0 +1,38 @@
+#container-cambio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.resumen{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+#cambioResdiv{
+    font-size: larger;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+}
+
+#totalResDiv, #metodoPagoRes{
+    font-size: large;
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.conteRes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    justify-content: space-between;
+}
